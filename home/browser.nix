@@ -1,0 +1,33 @@
+{ config, pkgs, inputs, ... }:
+
+{
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    extensions = [
+      {
+        id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; # ublock origin
+      }
+      {
+        id = "ihlenndgcmojhcghmfjfneahoeklbjjh"; # cVim
+      }
+      {
+        id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; # Dark Reader
+      }
+      {
+        id = "nngceckbapebfimnlniiiahkandclblb"; # Bitwarden
+      }
+      {
+        id = "icallnadddjmdinamnolclfjanhfoafe"; # Fast Forward
+      }
+      {
+        id = "ocgpenflpmgnfapjedencafcfakcekcd"; # Redirector
+      }
+      {
+        updateUrl =
+          "https://raw.githubusercontent.com/libredirect/libredirect/master/src/updates/updates.xml";
+        id = "ongajcjccibkomjojhfmjedolopocllf"; # LibRedirect
+      }
+    ];
+  };
+}
