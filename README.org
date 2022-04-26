@@ -1,4 +1,5 @@
 * nix-config
+
 [[https://builtwithnix.org][https://builtwithnix.org/badge.svg]]
 
 A nix flake that holds all of the system configurations of my personal
@@ -14,8 +15,10 @@ machines.
 | [[./lib][Lib]]      | libraries, tools and functions used in across this repo   |
 
 ** Hosts
-All of my hostnames are named after scientific names of monkeys/apes.
 
 | Name   | Description                                                                                |
 |--------+--------------------------------------------------------------------------------------------|
 | [[./hosts/nebula][Nebula]] | My desktop running a Intel Core 2 Quad Q8200, 3GB of RAM and a AMD ATI Radeon HD 4350/4550 |
+
+** Thanks
+[[https://github.com/Kranzes][@Kranzes]] - I basically copy pasted and edited his [[https://github.com/Kranzes/nix-config][config]]
