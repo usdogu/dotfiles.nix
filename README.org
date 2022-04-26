@@ -1,6 +1,5 @@
 * nix-config
-
-[[https://builtwithnix.org] [https://builtwithnix.org/badge.svg]]
+[[https://builtwithnix.org][https://builtwithnix.org/badge.svg]]
 
 A nix flake that holds all of the system configurations of my personal
 machines.
