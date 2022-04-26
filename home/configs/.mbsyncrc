@@ -1,0 +1,22 @@
+IMAPAccount disroot
+Host disroot.org
+User uspro@disroot.org
+PassCmd "cat emailpwds.txt | tail -n1"
+SSLType IMAPS
+
+IMAPStore disroot-remote
+Account disroot
+
+MaildirStore disroot-local
+Subfolders Verbatim
+Path ~/.mail/disroot/
+Inbox ~/.mail/disroot/inbox
+
+Channel disroot
+Master :disroot-remote:
+Slave :disroot-local:
+Patterns *
+Create Both
+SyncState *
+Sync pull
+Expunge none

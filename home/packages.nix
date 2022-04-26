@@ -76,6 +76,6 @@ in
     mu
     isync
     rnix-lsp
-
+    (callPackage ./nimblocks.nix { })
   ];
 }

@@ -5,6 +5,4 @@ let
   pkgs = inputs.nixpkgs.legacyPackages.${system};
 in
 
-{
-  "nimblocks" = pkgs.callPackage "${self}/packages/nimblocks" { };
-}
+{ }

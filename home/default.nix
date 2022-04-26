@@ -6,14 +6,14 @@
     extraSpecialArgs = { inherit inputs self; };
     users = {
       dogu = {
-        home.stateVersion = "21.11";
+        home.stateVersion = "22.05";
         imports = [
           ./packages.nix
           ./services.nix
           ./editors.nix
           ./ssh-gpg.nix
           ./git.nix
-          ./xresources.nix
+          ./xorg.nix
           ./shell.nix
           ./gtk-qt.nix
           ./devel.nix

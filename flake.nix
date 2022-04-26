@@ -3,8 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = { url = "github:nix-community/home-manager"; inputs.nixpkgs.follows = "nixpkgs"; };
-    pre-commit-hooks = { url = "github:cachix/pre-commit-hooks.nix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { self, ... }@inputs:
     let
@@ -21,10 +27,11 @@
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
 
-      checks.${system}.pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = self;
-        hooks.nixpkgs-fmt.enable = true;
-        hooks.shellcheck.enable = true;
-      };
+      checks.${system}.pre-commit-check =
+        inputs.pre-commit-hooks.lib.${system}.run {
+          src = self;
+          hooks.nixpkgs-fmt.enable = true;
+          hooks.shellcheck.enable = true;
+        };
     };
 }

@@ -21,5 +21,5 @@
     "*color7" = "#a89984";
     "*color15" = "#ebdbb2";
   };
-
+  home.file.".xinitrc".source = ./configs/.xinitrc;
 }
