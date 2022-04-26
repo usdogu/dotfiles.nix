@@ -1,0 +1,21 @@
+* nix-config
+[[https://builtwithnix.org][[[https://builtwithnix.org/badge.svg]]]]
+
+A nix flake that holds all of the system configurations of my personal
+machines.
+
+** Configurations & Modules
+| Name     | Description                                               |
+|----------+-----------------------------------------------------------|
+| [[./hosts][Hosts]]    | Host specific configurations (system-wide & Home-Manager) |
+| [[./modules][Modules]]  | Shared system-wide configurations between hosts           |
+| [[./home][Home]]     | Shared Home-Manager configurations between hosts          |
+| [[./packages][Packages]] | Modified nixpkgs packages and custom packages             |
+| [[./lib][Lib]]      | libraries, tools and functions used in across this repo   |
+
+** Hosts
+All of my hostnames are named after scientific names of monkeys/apes.
+
+| Name   | Description                                                                                |
+|--------+--------------------------------------------------------------------------------------------|
+| [[./hosts/nebula][Nebula]] | My desktop running a Intel Core 2 Quad Q8200, 3GB of RAM and a AMD ATI Radeon HD 4350/4550 |
