@@ -28,6 +28,9 @@
           "https://raw.githubusercontent.com/libredirect/libredirect/master/src/updates/updates.xml";
         id = "ongajcjccibkomjojhfmjedolopocllf"; # LibRedirect
       }
+      {
+        id = "fihnjjcciajhdojfnbdddfaoknhalnja"; # I don't care about cookies
+      }
     ];
   };
 }
