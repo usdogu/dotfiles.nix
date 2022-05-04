@@ -6,8 +6,8 @@ updates:
     interval: weekly
   open-pull-requests-limit: 10
   reviewers:
-  - Kranzes
+  - usdogu
   assignees:
-  - Kranzes
+  - usdogu
   labels:
   - CI
