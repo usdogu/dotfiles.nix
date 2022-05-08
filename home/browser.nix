@@ -21,9 +21,6 @@
         id = "icallnadddjmdinamnolclfjanhfoafe"; # Fast Forward
       }
       {
-        id = "ocgpenflpmgnfapjedencafcfakcekcd"; # Redirector
-      }
-      {
         updateUrl =
           "https://raw.githubusercontent.com/libredirect/libredirect/master/src/updates/updates.xml";
         id = "ongajcjccibkomjojhfmjedolopocllf"; # LibRedirect

@@ -15,6 +15,8 @@
       experimental-features = nix-command flakes
       builders-use-substitutes = true
     '';
+    gc.automatic = true;
+    gc.dates = "daily";
   };
   nixpkgs.config.allowUnfree = true;
 }
