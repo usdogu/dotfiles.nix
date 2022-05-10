@@ -8,4 +8,5 @@
     };
     ".mbsyncrc".source = ./configs/.mbsyncrc;
   };
+  xdg.configFile."zathura/zathurarc".source = ./configs/zathurarc;
 }
