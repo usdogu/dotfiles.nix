@@ -118,7 +118,6 @@ apps are not started from a shell."
 (setq telega-server-call-timeout 1000.0)
 (after! telega
   (telega-mode-line-mode 1)
-  (add-hook 'telega-msg-ignore-predicates 'telega-msg-from-blocked-sender-p)
   (add-load-path! "~/.emacs.d/.local/straight/repos/telega.el/contrib")
   (require 'telega-mnz)
   (require 'telega-url-shorten)

@@ -85,5 +85,6 @@ in
     isync
     rnix-lsp
     (callPackage ./nimblocks.nix { })
+    scrot
   ];
 }
