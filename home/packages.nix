@@ -78,6 +78,9 @@ in
     rebar3
     inotify-tools
 
+
+    elmPackages.elm
+    elmPackages.elm-language-server
     python-with-my-packages
     nodejs-16_x
     pcmanfm

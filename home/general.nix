@@ -2,10 +2,6 @@
 
 {
   home.file = {
-    "org" = {
-      source = ./configs/org;
-      recursive = true;
-    };
     ".mbsyncrc".source = ./configs/.mbsyncrc;
     "org/elfeed.org".source = ./configs/org/elfeed.org;
   };

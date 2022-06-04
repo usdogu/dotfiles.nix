@@ -62,6 +62,8 @@
     driSupport32Bit = true;
   };
 
+  services.resolved.enable = true;
+
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = true;
 
