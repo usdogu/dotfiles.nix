@@ -87,8 +87,7 @@ apps are not started from a shell."
 (set-file-template! "/LICEN[CS]E$" :trigger '+file-templates/insert-license)
 
 (add-hook! 'nim-mode-local-vars-hook #'lsp!)
-(add-hook! 'nix-mode-local-vars-hook #'lsp!)
-(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+(add-hook 'lisp-mode-hook #'parinfer-rust-mode)
 
 (if (boundp 'mac-mouse-wheel-smooth-scroll)
     (setq  mac-mouse-wheel-smooth-scroll t)
@@ -98,11 +97,8 @@ apps are not started from a shell."
       :config
       (good-scroll-mode 1))))
 
-(add-hook 'emacs-lisp-mode-hook #'parinfer-rust-mode)
-(add-hook 'clojure-mode-hook #'parinfer-rust-mode)
 
 (setq vterm-kill-buffer-on-exit t)
-(map! :after evil :gnvi "C-f" #'consult-line)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 
@@ -132,14 +128,5 @@ apps are not started from a shell."
   (setq org-roam-directory "~/Notes")
   )
 
-;; Email Settings
-(after! mu4e
-  (set-email-account! "disroot"
-  '((mu4e-sent-folder       . "/disroot/Sent Mail")
-    (mu4e-drafts-folder     . "/disroot/Drafts")
-    (mu4e-trash-folder      . "/disroot/Trash")
-    (mu4e-refile-folder     . "/disroot/All Mail")
-    )
-  t))
 
 (load! "format-time-string-patch.el")
