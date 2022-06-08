@@ -22,7 +22,7 @@
       lib = import ./lib inputs;
       packages.${system} = import ./packages inputs;
 
-      devShell.${system} = pkgs.mkShell {
+      devShell.${system}.default = pkgs.mkShell {
         packages = [ pkgs.nixpkgs-fmt ];
         inherit (self.checks.${system}.pre-commit-check) shellHook;
       };
@@ -31,7 +31,6 @@
         inputs.pre-commit-hooks.lib.${system}.run {
           src = self;
           hooks.nixpkgs-fmt.enable = true;
-          hooks.shellcheck.enable = true;
         };
     };
 }

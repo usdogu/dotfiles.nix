@@ -86,4 +86,5 @@
   };
 
   environment.variables.EDITOR = "nvim";
+  system.stateVersion = "22.11";
 }

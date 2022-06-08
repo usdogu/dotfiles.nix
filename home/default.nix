@@ -6,7 +6,7 @@
     extraSpecialArgs = { inherit inputs self; };
     users = {
       dogu = {
-        home.stateVersion = "22.05";
+        home.stateVersion = "22.11";
         imports = [
           ./packages.nix
           ./services.nix
