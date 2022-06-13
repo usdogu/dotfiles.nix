@@ -36,18 +36,14 @@
     keyMap = "trq";
   };
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-  ];
-
+  environment.systemPackages = with pkgs; [ neovim git ];
 
   # List services that you want to enable:
-  services = {
-    gnome.gnome-keyring.enable = true;
-  };
+  services = { gnome.gnome-keyring.enable = true; };
 
   # Enable sound.
+
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -62,10 +58,12 @@
     driSupport32Bit = true;
   };
 
-  #services.resolved.enable = true;
-
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = true;
+  swapDevices = [{
+    device = "/var/swapfile";
+    size = 2048;
+  }];
 
   security.doas.enable = true;
   security.doas.extraRules = [{
@@ -81,9 +79,7 @@
   };
 
   programs.dconf.enable = true;
-  programs.fish = {
-    enable = true;
-  };
+  programs.fish = { enable = true; };
 
   environment.variables.EDITOR = "nvim";
   system.stateVersion = "22.11";
