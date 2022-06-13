@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
-  # home.file = { "org/elfeed.org".source = ./configs/org/elfeed.org; }; # TODO find a fix for home.file
+  # home.file = {
+  #   "org/elfeed.org".source = ./configs/org/elfeed.org;
+  #   ".xinitrc".source = ./configs/.xinitrc;
+  # }; # TODO find a fix for home.file
   programs.zathura = {
     enable = true;
     extraConfig = ''

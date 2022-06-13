@@ -64,7 +64,6 @@ in
     gopls
     gnumake
     rust-analyzer
-    zathura
     #clojure things
     leiningen
     clojure-lsp

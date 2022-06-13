@@ -8,6 +8,7 @@
       dogu = {
         home.stateVersion = "22.11";
         imports = [
+          ./general.nix
           ./packages.nix
           ./services.nix
           ./editors.nix
