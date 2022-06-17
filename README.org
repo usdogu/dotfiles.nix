@@ -1,1 +1,1 @@
-Moved to https://codeberg.org/usdogu/usdogu.github.io
+Moved to https://codeberg.org/usdogu/dotfiles.nix
