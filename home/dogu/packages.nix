@@ -74,5 +74,6 @@ in {
     htop-vim
     xclip
     skim
+    telegram-desktop
   ];
 }

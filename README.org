@@ -1,0 +1,22 @@
+* nix-config
+
+A nix flake that holds all of the system configurations of my personal
+machines.
+
+** Configurations & Modules
+| Name     | Description                                               |
+|----------+-----------------------------------------------------------|
+| [[./hosts][Hosts]]    | Host specific configurations (system-wide & Home-Manager) |
+| [[./modules][Modules]]  | Shared system-wide configurations between hosts           |
+| [[./home][Home]]     | Shared Home-Manager configurations between hosts          |
+| [[./packages][Packages]] | Modified nixpkgs packages and custom packages             |
+| [[./lib][Lib]]      | libraries, tools and functions used in across this repo   |
+
+** Hosts
+
+| Name   | Description                                                                     |
+|--------+---------------------------------------------------------------------------------|
+| [[./hosts/nebula][Nebula]] | My desktop running a AMD FX-8320, 6GB of RAM and an AMD ATI Radeon HD 4350 |
+
+** Thanks
+[[https://github.com/Kranzes][@Kranzes]] - I basically copy pasted and edited his [[https://github.com/Kranzes/nix-config][config]]

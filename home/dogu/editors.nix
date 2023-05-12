@@ -1,18 +1,11 @@
 { ... }:
 
 {
-    programs.emacs = {
+  programs.emacs = {
     enable = true;
     extraPackages = epkgs: [ epkgs.vterm ];
   };
   services.emacs.enable = true;
-  # home.file = {
-  #   doomd = {
-  #     source = configs/.doom.d;
-  #     target = "/home/dogu/.doom.d";
-  #     recursive = true;
-  #   };
-  # };
   home.file.".doom.d" = {
     source = ./configs/.doom.d;
     recursive = true;

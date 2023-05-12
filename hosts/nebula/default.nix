@@ -1,6 +1,6 @@
 # configuration.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -13,8 +13,7 @@
   boot = {
     loader = {
       grub.enable = true;
-      grub.version = 2;
-      grub.device = "/dev/sda";
+      grub.device = "/dev/sdb";
       grub.useOSProber = true;
     };
     supportedFilesystems = [ "ntfs" ];
@@ -24,6 +23,8 @@
     hardwareClockInLocalTime = true;
     timeZone = "Europe/Istanbul";
   };
+
+  fonts.fonts = with pkgs; [ iosevka-bin ];
 
   networking = {
     hostName = "nebula";
@@ -39,28 +40,26 @@
   };
   systemd.network.enable = true;
   systemd.network.wait-online.enable = false;
-  systemd.network.networks =
-    let
-      networkConfig = {
-        DHCP = "yes";
-        DNSSEC = "yes";
-        DNSOverTLS = "yes";
-        DNS = [ "1.1.1.1" "1.0.0.1" ];
-      };
-    in
-    {
-      # Config for all useful interfaces
-      "40-wired" = {
-        enable = true;
-        name = "en*";
-        inherit networkConfig;
-      };
-      "40-wireless" = {
-        enable = true;
-        name = "wl*";
-        inherit networkConfig;
-      };
+  systemd.network.networks = let
+    networkConfig = {
+      DHCP = "yes";
+      DNSSEC = "yes";
+      DNSOverTLS = "yes";
+      DNS = [ "1.1.1.1" "1.0.0.1" ];
     };
+  in {
+    # Config for all useful interfaces
+    "40-wired" = {
+      enable = true;
+      name = "en*";
+      inherit networkConfig;
+    };
+    "40-wireless" = {
+      enable = true;
+      name = "wl*";
+      inherit networkConfig;
+    };
+  };
 
   systemd.services.restartWifiDongle = {
     wantedBy = [ "multi-user.target" ];
