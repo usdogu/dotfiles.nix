@@ -24,7 +24,10 @@
     timeZone = "Europe/Istanbul";
   };
 
-  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
+    iosevka-bin
+  ];
 
   networking = {
     hostName = "nebula";
@@ -123,6 +126,7 @@
   };
 
   programs.dconf.enable = true;
+  services.dbus.packages = [ pkgs.gcr ];
   programs.fish = { enable = true; };
 
   environment.variables.EDITOR = "nvim";
