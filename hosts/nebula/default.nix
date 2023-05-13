@@ -78,13 +78,11 @@
     keyMap = "trq";
   };
 
-  environment.systemPackages = with pkgs; [ neovim git tailscale ];
+  environment.systemPackages = with pkgs; [ neovim git ];
 
   # List services that you want to enable:
   services = {
     gnome.gnome-keyring.enable = true;
-
-    tailscale.enable = true;
     openssh.enable = true;
   };
   # Enable sound.
