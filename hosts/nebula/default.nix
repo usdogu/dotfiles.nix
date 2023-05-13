@@ -24,7 +24,7 @@
     timeZone = "Europe/Istanbul";
   };
 
-  fonts.fonts = with pkgs; [ iosevka-bin ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
 
   networking = {
     hostName = "nebula";

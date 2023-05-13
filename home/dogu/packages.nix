@@ -23,8 +23,8 @@ in {
         domain = "codeberg.org";
         owner = "usdogu";
         repo = "st";
-        rev = "f98f48b1d0ca2108bd7f9454e166a4fc325a32b3";
-        sha256 = "07sac27j674w7ksvjigsj9zz92v1h5laviy776csa74rqg3pqd6n";
+        rev = "27c2361b7e0dcc18b33bf50d21912f870ee96dfb";
+        sha256 = "sha256-bPxhyLkwXM8sjcTsaZG4A1/EdMVxLRanKJI3yMhyG7o=";
       };
       buildInputs = oldAttrs.buildInputs ++ (with super; [ harfbuzz glib gd ]);
     }))
