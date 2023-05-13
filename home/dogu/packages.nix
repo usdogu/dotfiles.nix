@@ -75,5 +75,6 @@ in {
     xclip
     skim
     telegram-desktop
+    jaq # alternative for jq
   ];
 }

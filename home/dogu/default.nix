@@ -14,5 +14,7 @@
     ./gtk-qt.nix
     ./devel.nix
     ./browser.nix
+    ./wm.nix
+    ./anyrun.nix
   ];
 }

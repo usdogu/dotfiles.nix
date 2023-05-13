@@ -3,10 +3,6 @@
 {
   gtk = {
     enable = true;
-    cursorTheme = {
-      name = "capitaine-cursors-white";
-      package = pkgs.capitaine-cursors;
-    };
     font = {
       name = "Iosevka Medium Italic 12";
       package = (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; });
@@ -24,5 +20,12 @@
     enable = true;
     platformTheme = "gtk";
     style.name = "gtk2";
+  };
+
+  home.pointerCursor = {
+    package = pkgs.capitaine-cursors;
+    name = "Capitaine Cursors";
+    gtk.enable = true;
+    x11.enable = true;
   };
 }

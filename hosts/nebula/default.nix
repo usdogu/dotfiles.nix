@@ -1,6 +1,6 @@
 # configuration.nix
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -24,10 +24,7 @@
     timeZone = "Europe/Istanbul";
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-    iosevka-bin
-  ];
+  fonts.fonts = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
 
   networking = {
     hostName = "nebula";
@@ -127,7 +124,19 @@
 
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
+  services.fstrim.enable = true;
   programs.fish = { enable = true; };
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
   environment.variables.EDITOR = "nvim";
   system.stateVersion = "23.05";

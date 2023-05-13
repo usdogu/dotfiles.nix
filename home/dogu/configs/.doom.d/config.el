@@ -114,6 +114,7 @@
   (require 'telega-mnz)
   (require 'telega-url-shorten)
   (setq telega-url-shorten-use-images t)
+  (setq telega-chat-show-deleted-messages-for 'all)
   (global-telega-mnz-mode 1)
   (global-telega-url-shorten-mode 1))
 

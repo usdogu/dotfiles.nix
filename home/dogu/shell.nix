@@ -15,6 +15,8 @@
       rm = "rip";
       v = "nvim";
       gc = "git clone";
+      nix-cleanup =
+        "s nix-collect-garbage -d --delete-older-than 1d; nix-collect-garbage -d; s nix-store --optimize; s nix-store --gc";
     };
     shellAbbrs = { sv = "sudo -e"; };
     shellInit = ''
@@ -41,6 +43,8 @@
       };
     };
   };
+  home.sessionPath =
+    [ "$HOME/.cargo/bin" "$HOME/bin" "$HOME/bin/zig" "$HOME/.local/bin" ];
 
   programs.starship = {
     enable = true;
@@ -112,7 +116,5 @@
 
   home.file.".tmux.conf".source = ./configs/tmux/.tmux.conf;
   home.file.".tmux.conf.local".source = ./configs/tmux/.tmux.conf.local;
-  
-  home.sessionPath = [ "$HOME/.cargo/bin" "$HOME/bin" "$HOME/.local/bin" ];
 
 }
