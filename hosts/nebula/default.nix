@@ -1,6 +1,6 @@
 # configuration.nix
 
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -78,16 +78,17 @@
     keyMap = "trq";
   };
 
-  environment.systemPackages = with pkgs; [ neovim git ];
+  environment.systemPackages = with pkgs; [ neovim git qt5.qtwayland ];
 
   # List services that you want to enable:
   services = {
     # gnome.gnome-keyring.enable = true;
     openssh.enable = true;
   };
-  # Enable sound.
 
+  security.polkit.enable = true;
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -104,6 +105,7 @@
 
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = true;
+
   swapDevices = [{
     device = "/var/swapfile";
     size = 2048;
@@ -121,20 +123,14 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "docker" ];
     shell = pkgs.fish;
   };
+  programs.fish = { enable = true; };
 
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
   services.fstrim.enable = true;
-  programs.fish = { enable = true; };
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 

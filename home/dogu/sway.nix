@@ -1,0 +1,82 @@
+{ pkgs, lib, config, ... }: {
+  wayland.windowManager.sway = {
+    enable = true;
+    config = {
+      bars = [ ];
+      menu = "${pkgs.bemenu}/bin/bemenu-run";
+      modifier = "Mod4";
+      input = { "*" = { xkb_layout = "tr"; }; };
+
+      window = {
+        border = 0;
+        titlebar = false;
+        hideEdgeBorders = "both";
+        commands = [
+          {
+            criteria = { shell = ".*"; };
+            command = "inhibit_idle fullscreen";
+          }
+          {
+            criteria = {
+              app_id = "telegramdesktop";
+              title = "TelegramDesktop";
+            };
+            command = "floating enable; stick enable";
+          } # Main window is called "Telegram (N)", popups are called "TelegramDesktop"
+          {
+            criteria = {
+              app_id = "firefox";
+              title = "Picture-in-Picture";
+            };
+            command = "floating enable; sticky enable";
+          }
+          {
+            criteria = {
+              app_id = "firefox";
+              title = "Firefox — Sharing Indicator";
+            };
+            command = "floating enable; sticky enable";
+          }
+          {
+            criteria = {
+              app_id = "";
+              title = ".+\\(\\/run\\/current-system\\/sw\\/bin\\/gpg .+";
+            };
+            command = "floating enable; sticky enable";
+          }
+        ];
+      };
+
+      keybindings = let
+        modifier = config.wayland.windowManager.sway.config.modifier;
+        menu = config.wayland.windowManager.sway.config.menu;
+      in lib.mkOptionDefault {
+        "${modifier}+Shift+c" = "kill";
+        "${modifier}+Shift+r" = "reload";
+        "${modifier}+Shift+Return" = "exec ${menu}";
+        "Print" =
+          "exec ${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+        "${modifier}+Print" =
+          "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+      };
+    };
+    extraSessionCommands = ''
+      export XDG_SESSION_DESKTOP=sway
+      export SDL_VIDEODRIVER=wayland
+      # needs qt5.qtwayland in systemPackages
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      # Fix for some Java AWT applications (e.g. Android Studio),
+      # use this if they aren't displayed properly:
+      export _JAVA_AWT_WM_NONREPARENTING=1
+      export MOZ_ENABLE_WAYLAND=1
+      export CLUTTER_BACKEND=wayland
+      export ECORE_EVAS_ENGINE=wayland-egl
+      export ELM_ENGINE=wayland_egl
+      export NO_AT_BRIDGE=1
+    '';
+    wrapperFeatures.gtk = true;
+  };
+
+  home.packages = with pkgs; [ foot ];
+}

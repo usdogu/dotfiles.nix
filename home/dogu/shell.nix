@@ -17,6 +17,7 @@
       gc = "git clone";
       nix-cleanup =
         "s nix-collect-garbage -d --delete-older-than 1d; nix-collect-garbage -d; s nix-store --optimize; s nix-store --gc";
+      man = "batman";
     };
     shellAbbrs = { sv = "sudo -e"; };
     shellInit = ''

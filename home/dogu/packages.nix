@@ -76,5 +76,6 @@ in {
     skim
     telegram-desktop
     jaq # alternative for jq
+    bat-extras.batman # use bat for viewing man pages
   ];
 }
