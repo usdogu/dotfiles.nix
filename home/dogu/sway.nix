@@ -7,7 +7,7 @@
       menu = "${pkgs.bemenu}/bin/bemenu-run";
       modifier = "Mod4";
       input = { "*" = { xkb_layout = "tr"; }; };
-
+      fonts = { names = [ "Iosevka Nerd Font" ]; };
       window = {
         border = 0;
         titlebar = false;
@@ -77,6 +77,9 @@
       export NO_AT_BRIDGE=1
     '';
     wrapperFeatures.gtk = true;
+    extraConfig = ''
+      seat seat0 xcursor_theme "capitaine-cursors-white" 32
+    '';
   };
 
   programs.foot = {
@@ -107,5 +110,4 @@
       };
     };
   };
-
 }

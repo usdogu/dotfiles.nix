@@ -59,7 +59,6 @@ in {
     #elixir things
     elixir
     elixir_ls
-    rebar3
     inotify-tools
 
     python-with-my-packages
