@@ -18,6 +18,7 @@
       nix-cleanup =
         "s nix-collect-garbage -d --delete-older-than 1d; nix-collect-garbage -d; s nix-store --optimize; s nix-store --gc";
       man = "batman";
+      devmux = "tmuxinator start dev";
     };
     shellAbbrs = { sv = "sudo -e"; };
     shellInit = ''
@@ -117,5 +118,5 @@
 
   home.file.".tmux.conf".source = ./configs/tmux/.tmux.conf;
   home.file.".tmux.conf.local".source = ./configs/tmux/.tmux.conf.local;
-
+  xdg.configFile."tmuxinator/dev.yml".source = ./configs/tmux/dev.yml;
 }

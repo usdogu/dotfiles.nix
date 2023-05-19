@@ -7,7 +7,7 @@ machines.
 | Name     | Description                                               |
 |----------+-----------------------------------------------------------|
 | [[./hosts][Hosts]]    | Host specific configurations (system-wide & Home-Manager) |
-| [[file:profiles/][Profiles]] | Shared system-wide configurations between hosts           |
+| [[.profiles][Profiles]] | Shared system-wide configurations between hosts           |
 | [[./home][Home]]     | Shared Home-Manager configurations between hosts          |
 | [[./packages][Packages]] | Modified nixpkgs packages and custom packages             |
 | [[./lib][Lib]]      | libraries, tools and functions used in across this repo   |
