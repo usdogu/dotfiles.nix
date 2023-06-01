@@ -28,4 +28,8 @@
     gtk.enable = true;
     x11.enable = true;
   };
+
+  fonts.fontconfig.enable = true;
+
+  home.packages = with pkgs; [ emojione ];
 }

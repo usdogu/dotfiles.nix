@@ -3,8 +3,8 @@
     enable = true;
     config = {
       bars = [ ];
-      terminal = "foot";
-      menu = "${pkgs.bemenu}/bin/bemenu-run";
+      terminal = "alacritty";
+      menu = "bemenu-run";
       modifier = "Mod4";
       input = { "*" = { xkb_layout = "tr"; }; };
       fonts = { names = [ "Iosevka Nerd Font" ]; };
@@ -59,6 +59,7 @@
           "exec ${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
         "${modifier}+Print" =
           "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+        "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t bemenu";
       };
     };
     extraSessionCommands = ''
@@ -79,11 +80,12 @@
     wrapperFeatures.gtk = true;
     extraConfig = ''
       seat seat0 xcursor_theme "capitaine-cursors-white" 32
+      exec ${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store
     '';
   };
 
   programs.foot = {
-    enable = true;
+    enable = false;
     settings = {
       main = {
         font = "Iosevka Nerd Font :pixelsize=15:antialias=true:autohint=true";
@@ -110,4 +112,6 @@
       };
     };
   };
+
+  home.packages = with pkgs; [ bemenu ];
 }
