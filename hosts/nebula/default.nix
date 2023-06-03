@@ -128,6 +128,8 @@
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
   services.fstrim.enable = true;
+  # allow swaylock to unlock session
+  security.pam.services.swaylock = { };
 
   xdg.portal = {
     enable = true;

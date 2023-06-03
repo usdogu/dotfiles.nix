@@ -113,5 +113,15 @@
     };
   };
 
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      clock = true;
+      indicator = true;
+      font = "Iosevka Nerd Font *";
+    };
+  };
+
   home.packages = with pkgs; [ bemenu ];
 }
