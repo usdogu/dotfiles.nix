@@ -10,6 +10,7 @@
     source = ./configs/.doom.d;
     recursive = true;
   };
+
   programs.helix = {
     enable = true;
     settings = {

@@ -28,48 +28,50 @@
 
   networking = {
     hostName = "nebula";
-    useDHCP = false;
-    dhcpcd.enable = false;
-    useNetworkd = true;
-    wireless.enable = true;
-    wireless.userControlled.enable = true;
-    wireless.networks."EFiberHGW_ZTNK5Z_2.4GHz".pskRaw =
-      "62828b83575cc01632b63d486ea89ce495f241923dfa9a7f2e03ba538eca5ebe";
-    wireless.networks."USPRO2.4_Extended".pskRaw =
-      "55a176bb330c57c275c1591ee578c6f2796eb16899d58798dd9325cf9c1f0f1c";
+    networkmanager.enable = true;
+    # useDHCP = true;
+    # useDHCP = false;
+    # dhcpcd.enable = false;
+    # useNetworkd = true;
+    # wireless.enable = true;
+    # wireless.userControlled.enable = true;
+    # wireless.networks."EFiberHGW_ZTNK5Z_2.4GHz".pskRaw =
+    #   "62828b83575cc01632b63d486ea89ce495f241923dfa9a7f2e03ba538eca5ebe";
+    # wireless.networks."USPRO2.4_Extended".pskRaw =
+    #   "55a176bb330c57c275c1591ee578c6f2796eb16899d58798dd9325cf9c1f0f1c";
   };
-  systemd.network.enable = true;
-  systemd.network.wait-online.enable = false;
-  systemd.network.networks = let
-    networkConfig = {
-      DHCP = "yes";
-      DNSSEC = "yes";
-      DNSOverTLS = "yes";
-      DNS = [ "1.1.1.1" "1.0.0.1" ];
-    };
-  in {
-    # Config for all useful interfaces
-    "40-wired" = {
-      enable = true;
-      name = "en*";
-      inherit networkConfig;
-    };
-    "40-wireless" = {
-      enable = true;
-      name = "wl*";
-      inherit networkConfig;
-    };
-  };
+  # systemd.network.enable = true;
+  # systemd.network.wait-online.enable = false;
+  # systemd.network.networks = let
+  #   networkConfig = {
+  #     DHCP = "yes";
+  #     DNSSEC = "yes";
+  #     DNSOverTLS = "yes";
+  #     DNS = [ "1.1.1.1" "1.0.0.1" ];
+  #   };
+  # in {
+  #   # Config for all useful interfaces
+  #   "40-wired" = {
+  #     enable = true;
+  #     name = "en*";
+  #     inherit networkConfig;
+  #   };
+  #   "40-wireless" = {
+  #     enable = true;
+  #     name = "wl*";
+  #     inherit networkConfig;
+  #   };
+  # };
 
-  systemd.services.restartWifiDongle = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    description = "Restart the wifi dongle driver";
-    serviceConfig = {
-      ExecStart =
-        "${pkgs.fish}/bin/fish -c '/run/current-system/sw/bin/rmmod ath9k_htc && /run/current-system/sw/bin/modprobe ath9k_htc'";
-    };
-  };
+  # systemd.services.restartWifiDongle = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   after = [ "network.target" ];
+  #   description = "Restart the wifi dongle driver";
+  #   serviceConfig = {
+  #     ExecStart =
+  #       "${pkgs.fish}/bin/fish -c '/run/current-system/sw/bin/rmmod ath9k_htc && /run/current-system/sw/bin/modprobe ath9k_htc'";
+  #   };
+  # };
 
   nix.settings.trusted-users = [ "dogu" ];
 
