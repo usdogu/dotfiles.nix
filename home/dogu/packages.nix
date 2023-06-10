@@ -64,7 +64,6 @@ in {
     python-with-my-packages
     inputs.self.packages."${pkgs.system}".nimblocks
     obs-studio
-    flameshot
     file
     ps_mem
     killall
@@ -76,5 +75,6 @@ in {
     telegram-desktop
     jaq # alternative for jq
     bat-extras.batman # use bat for viewing man pages
+    home-manager
   ];
 }

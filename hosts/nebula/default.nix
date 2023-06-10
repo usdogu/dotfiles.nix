@@ -29,49 +29,12 @@
   networking = {
     hostName = "nebula";
     networkmanager.enable = true;
-    # useDHCP = true;
-    # useDHCP = false;
-    # dhcpcd.enable = false;
-    # useNetworkd = true;
-    # wireless.enable = true;
-    # wireless.userControlled.enable = true;
-    # wireless.networks."EFiberHGW_ZTNK5Z_2.4GHz".pskRaw =
-    #   "62828b83575cc01632b63d486ea89ce495f241923dfa9a7f2e03ba538eca5ebe";
-    # wireless.networks."USPRO2.4_Extended".pskRaw =
-    #   "55a176bb330c57c275c1591ee578c6f2796eb16899d58798dd9325cf9c1f0f1c";
   };
-  # systemd.network.enable = true;
-  # systemd.network.wait-online.enable = false;
-  # systemd.network.networks = let
-  #   networkConfig = {
-  #     DHCP = "yes";
-  #     DNSSEC = "yes";
-  #     DNSOverTLS = "yes";
-  #     DNS = [ "1.1.1.1" "1.0.0.1" ];
-  #   };
-  # in {
-  #   # Config for all useful interfaces
-  #   "40-wired" = {
-  #     enable = true;
-  #     name = "en*";
-  #     inherit networkConfig;
-  #   };
-  #   "40-wireless" = {
-  #     enable = true;
-  #     name = "wl*";
-  #     inherit networkConfig;
-  #   };
-  # };
 
-  # systemd.services.restartWifiDongle = {
-  #   wantedBy = [ "multi-user.target" ];
-  #   after = [ "network.target" ];
-  #   description = "Restart the wifi dongle driver";
-  #   serviceConfig = {
-  #     ExecStart =
-  #       "${pkgs.fish}/bin/fish -c '/run/current-system/sw/bin/rmmod ath9k_htc && /run/current-system/sw/bin/modprobe ath9k_htc'";
-  #   };
-  # };
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ brgenml1cupswrapper ];
+  };
 
   nix.settings.trusted-users = [ "dogu" ];
 
@@ -80,13 +43,14 @@
     keyMap = "trq";
   };
 
-  environment.systemPackages = with pkgs; [ neovim git qt5.qtwayland ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    qt5.qtwayland
+    virt-manager
+  ];
 
-  # List services that you want to enable:
-  services = {
-    # gnome.gnome-keyring.enable = true;
-    openssh.enable = true;
-  };
+  services = { openssh.enable = true; };
 
   security.polkit.enable = true;
   security.rtkit.enable = true;
@@ -98,15 +62,17 @@
     alsa.support32Bit = true;
   };
 
-  # enable OpenGL
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   swapDevices = [{
     device = "/var/swapfile";
@@ -122,7 +88,7 @@
 
   users.users.dogu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" ];
     shell = pkgs.fish;
   };
   programs.fish = { enable = true; };
