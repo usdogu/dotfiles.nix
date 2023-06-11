@@ -7,4 +7,5 @@ in
 
 {
   nimblocks = pkgs.callPackage "${inputs.self}/packages/nimblocks" {};
+  spotify-adblock = pkgs.callPackage "${inputs.self}/packages/spotify-adblock" {};
 }

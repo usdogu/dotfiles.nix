@@ -110,8 +110,9 @@
 (setq telega-use-images t)
 (setq telega-server-call-timeout 1000.0)
 (after! telega
+  (setq telega-server-verbosity 0)
   (telega-mode-line-mode 1)
-  (add-load-path! "~/.emacs.d/.local/straight/repos/telega.el/contrib")
+  (add-load-path! "~/.config/emacs/.local/straight/repos/telega.el/contrib")
   (require 'telega-mnz)
   (require 'telega-url-shorten)
   (setq telega-url-shorten-use-images t)

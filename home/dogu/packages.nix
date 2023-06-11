@@ -76,5 +76,6 @@ in {
     jaq # alternative for jq
     bat-extras.batman # use bat for viewing man pages
     home-manager
+    inputs.self.packages."${pkgs.system}".spotify-adblock
   ];
 }
