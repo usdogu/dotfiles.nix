@@ -16,6 +16,10 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    grub2-themes = {
+      url = "github:AnotherGroupChat/grub2-themes-png";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

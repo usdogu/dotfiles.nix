@@ -15,6 +15,12 @@
       grub.enable = true;
       grub.device = "/dev/sdb";
       grub.useOSProber = true;
+
+      grub2-theme = {
+        enable = true;
+        theme = "vimix";
+      };
+
     };
     supportedFilesystems = [ "ntfs" ];
   };

@@ -1,12 +1,7 @@
 inputs:
 
-{ hostname
-, system
-, extraSpecialArgs ? { }
-, extraModules ? [ ]
-, home-manager ? false
-, extraHomeModules ? [ ]
-}:
+{ hostname, system, extraSpecialArgs ? { }, extraModules ? [ ]
+, home-manager ? false, extraHomeModules ? [ ] }:
 
 inputs.nixpkgs.lib.nixosSystem {
   inherit system;
@@ -14,10 +9,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     "${inputs.self}/hosts/${hostname}"
     "${inputs.self}/profiles"
-    inputs.agenix.nixosModules.age
-    {
-      networking.hostName = hostname;
-    }
+    { networking.hostName = hostname; }
   ] ++ inputs.nixpkgs.lib.optionals home-manager [
     inputs.home-manager.nixosModule
     "${inputs.self}/home"

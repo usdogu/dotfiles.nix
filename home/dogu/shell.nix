@@ -16,7 +16,7 @@
       v = "nvim";
       gc = "git clone";
       nix-cleanup =
-        "home-manager expire-generations '-1 day';s nix-collect-garbage -d;s nix-store --optimize";
+        "home-manager expire-generations '-1 day'; s nix-collect-garbage -d; nix-collect-garbage -d; s nix-store --optimize";
       man = "batman";
       devmux = "tmuxinator start dev";
     };
