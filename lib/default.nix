@@ -1,3 +1,1 @@
-inputs: {
-  mkSystem = import ./mkSystem.nix inputs;
-}
+{ inputs, ... }: { flake.lib = { mkSystem = import ./mkSystem.nix inputs; }; }

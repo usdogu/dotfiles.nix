@@ -80,10 +80,7 @@
     dockerCompat = true;
   };
 
-  swapDevices = [{
-    device = "/var/swapfile";
-    size = 2048;
-  }];
+  zramSwap.enable = true;
 
   security.doas.enable = true;
   security.doas.extraRules = [{

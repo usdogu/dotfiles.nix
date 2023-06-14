@@ -1,11 +1,9 @@
-inputs:
-
-let
-  system = "x86_64-linux";
-  pkgs = inputs.nixpkgs.legacyPackages.${system};
-in
+{ ... }:
 
 {
-  nimblocks = pkgs.callPackage "${inputs.self}/packages/nimblocks" {};
-  spotify-adblock = pkgs.callPackage "${inputs.self}/packages/spotify-adblock" {};
+  perSystem = { pkgs, lib, ... }: {
+    packages = lib.genAttrs
+      (lib.remove "default.nix" (lib.attrNames (builtins.readDir ./.)))
+      (p: pkgs.callPackage ./${p} { }); # dear Nix, wtf is that syntax?
+  };
 }

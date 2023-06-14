@@ -1,5 +1,6 @@
 {
-  description = "My nix flake configuration";
+  description =
+    "I've nixed any chance I've ever had at human interaction by building this config.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -20,30 +21,25 @@
       url = "github:AnotherGroupChat/grub2-themes-png";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-    in {
-      lib = import ./lib inputs;
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+      imports =
+        [ ./packages ./lib ./hosts inputs.pre-commit-hooks.flakeModule ];
 
-      nixosConfigurations = import ./hosts inputs;
-
-      packages.${system} = import ./packages inputs;
-
-      devShells.${system}.default = pkgs.mkShellNoCC {
-        packages = [ pkgs.nixpkgs-fmt inputs.agenix.packages.${system}.agenix ];
-        inherit (inputs.self.checks.${system}.pre-commit-check) shellHook;
-      };
-
-      checks.${system}.pre-commit-check =
-        inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks.nil.enable = true;
-          hooks.nixfmt.enable = true;
+      perSystem = { pkgs, inputs', ... }: {
+        pre-commit.settings.hooks = {
+          nixfmt.enable = true;
+          nil.enable = true;
         };
-
+        devShells.default =
+          pkgs.mkShellNoCC { packages = [ inputs'.agenix.packages.agenix ]; };
+      };
     };
 }
