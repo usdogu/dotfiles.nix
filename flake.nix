@@ -16,7 +16,7 @@
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.nixpkgs-stable.follows = "nixpkgs"; # who tf cares about stability?
+      inputs.nixpkgs-stable.follows = "nixpkgs"; # who tf cares about stability?
     };
     grub2-themes = {
       url = "github:AnotherGroupChat/grub2-themes-png";
@@ -34,13 +34,17 @@
       imports =
         [ ./packages ./lib ./hosts inputs.pre-commit-hooks.flakeModule ];
 
-      perSystem = { pkgs, inputs', ... }: {
+      perSystem = { config, pkgs, inputs', ... }: {
         pre-commit.settings.hooks = {
           nixfmt.enable = true;
           nil.enable = true;
         };
-        devShells.default =
-          pkgs.mkShellNoCC { packages = [ inputs'.agenix.packages.agenix ]; };
+        devShells.default = pkgs.mkShellNoCC {
+          packages = [ inputs'.agenix.packages.agenix ];
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
+        };
       };
     };
 }
