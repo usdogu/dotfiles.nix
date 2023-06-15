@@ -48,7 +48,6 @@ in {
     rm-improved
     zoxide
     gtk-engine-murrine
-    spotify
     tealdeer
     gnutls
     gnumake
