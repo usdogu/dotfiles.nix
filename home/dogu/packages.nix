@@ -62,7 +62,6 @@ in {
 
     python-with-my-packages
     inputs.self.packages."${pkgs.system}".nimblocks
-    obs-studio
     file
     ps_mem
     killall
@@ -76,5 +75,6 @@ in {
     bat-extras.batman # use bat for viewing man pages
     home-manager
     inputs.self.packages."${pkgs.system}".spotify-adblock
+    wf-recorder # obs but lighter and for wayland
   ];
 }
