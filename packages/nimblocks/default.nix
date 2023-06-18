@@ -1,14 +1,13 @@
-{ lib, nimPackages, nim, libX11 }:
+{ lib, nimPackages, libX11 }:
 let
-  nimx11 = nimPackages.buildNimPackage rec {
+  nimx11 = nimPackages.buildNimPackage {
     name = "x11";
     src = fetchTarball {
       url = "https://github.com/nim-lang/x11/archive/master.tar.gz";
       sha256 = "0h770z36g2pk49pm5l1hmk9bi7a58w8csd7wqxcwy0bi41g74x6r";
     };
   };
-in
-nimPackages.buildNimPackage rec {
+in nimPackages.buildNimPackage {
   name = "nimblocks";
   nimBinOnly = true;
   src = fetchTarball {

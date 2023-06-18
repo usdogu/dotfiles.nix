@@ -13,7 +13,7 @@
 
   # install doomemacs on activation of generation
   home.activation = {
-    DoomEmacsAction = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    DoomEmacsAction = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       if [[ ! -d "${config.xdg.configHome}"/emacs ]]; then
         $DRY_RUN_CMD ${pkgs.git}/bin/git clone $VERBOSE_ARG --depth=1 --single-branch https://github.com/doomemacs/doomemacs.git "${config.xdg.configHome}"/emacs
         PATH=${pkgs.git}/bin:$PATH EMACS="${config.programs.emacs.finalPackage}"/bin/emacs $DRY_RUN_CMD "${config.xdg.configHome}"/emacs/bin/doom sync

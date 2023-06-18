@@ -1,5 +1,5 @@
 {
-    xresources.properties = {
+  xresources.properties = {
     "*background" = "#282828";
     "*foreground" = "#ebdbb2";
     "*color0" = "#282828";
@@ -20,4 +20,4 @@
     "*color15" = "#ebdbb2";
   };
   home.file.".xinitrc".source = ./configs/.xinitrc;
-}    
+}
