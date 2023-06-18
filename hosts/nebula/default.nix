@@ -11,6 +11,7 @@
 
   # Use the systemd-boot
   boot = {
+    tmp.cleanOnBoot = true;
     loader = {
       grub.enable = true;
       grub.device = "/dev/sdb";

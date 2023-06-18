@@ -31,8 +31,13 @@
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      imports =
-        [ ./packages ./lib ./hosts inputs.pre-commit-hooks.flakeModule ];
+      imports = [
+        ./packages
+        ./lib
+        ./hosts
+        ./devel
+        inputs.pre-commit-hooks.flakeModule
+      ];
 
       perSystem = { config, pkgs, inputs', ... }: {
         pre-commit.settings.hooks = {
