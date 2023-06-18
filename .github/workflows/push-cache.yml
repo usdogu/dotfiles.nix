@@ -2,7 +2,7 @@ name: "Push to cache"
 on:
   push:
 jobs:
-  tests:
+  cache:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -14,4 +14,6 @@ jobs:
         name: usdogu
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: |
-        nix build github:srid/devour-flake -L --no-link --print-out-paths --override-input flake . | xargs cat | cachix push usdogu
+        nix build --impure github:srid/devour-flake -L --no-link --print-out-paths --override-input flake . | xargs cat | cachix push usdogu
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
