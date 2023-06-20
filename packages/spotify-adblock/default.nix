@@ -9,6 +9,8 @@ let
     pname = "spotify-adblock";
     version = "1.0.2-unstable-2023-04-09";
 
+    doCheck = false;
+
     src = fetchFromGitHub {
       owner = "abba23";
       repo = pname;
