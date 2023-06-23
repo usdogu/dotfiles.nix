@@ -171,6 +171,7 @@
         size = 13;
       };
     };
-
   };
+
+  xdg.enable = true;
 }
