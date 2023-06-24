@@ -26,12 +26,18 @@
     settings = {
       theme = "gruvbox_dark_hard";
       editor = {
-        lsp.display-inlay-hints = true;
+        lsp = {
+          goto-reference-include-declaration = false;
+          display-inlay-hints = true;
+        };
+
         cursor-shape = {
           insert = "bar";
           normal = "block";
           select = "underline";
         };
+
+        file-picker.hidden = false;
       };
       keys = {
         normal = {

@@ -43,7 +43,9 @@ in {
 
     nil
 
-    rustup
+    rustc
+    cargo
+    rust-analyzer
     lsd
     rm-improved
     zoxide
