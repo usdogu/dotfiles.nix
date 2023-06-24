@@ -48,7 +48,6 @@ in {
     rust-analyzer
     lsd
     rm-improved
-    zoxide
     gtk-engine-murrine
     tealdeer
     gnutls
@@ -71,7 +70,7 @@ in {
     mpv
     htop-vim
     xclip
-    skim
+    wl-clipboard
     telegram-desktop
     jaq # alternative for jq
     bat-extras.batman # use bat for viewing man pages

@@ -4,6 +4,7 @@
   programs.fish = {
     enable = true;
     shellAliases = {
+      cd = "z";
       cls = "clear";
       s = "doas";
       ls = "lsd";
@@ -24,11 +25,6 @@
     shellInit = ''
       set -gx COLORTERM truecolor
       set -U fish_greeting
-      starship init fish | source
-      zoxide init --cmd cd fish | source
-      # use GPG for SSH auth
-      gpg-connect-agent /bye
-      set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     '';
     functions = {
       cd = {
@@ -172,6 +168,10 @@
       };
     };
   };
+
+  programs.zoxide.enable = true;
+
+  programs.skim.enable = true;
 
   xdg.enable = true;
 }
