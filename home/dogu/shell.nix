@@ -112,11 +112,6 @@
 
   };
 
-  programs.atuin = {
-    enable = true;
-    flags = [ "--disable-up-arrow" ];
-  };
-
   programs.zellij = {
     enable = true;
     settings = {
