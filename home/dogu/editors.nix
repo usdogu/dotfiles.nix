@@ -53,6 +53,24 @@
         };
       };
     };
+    languages = {
+      language = [
+        {
+          name = "nix";
+          language-server.command = lib.getExe pkgs.nil;
+          formatter.command = lib.getExe pkgs.nixfmt;
+        }
+        {
+          name = "rust";
+          language-server.command = lib.getExe pkgs.rust-analyzer;
+          formatter.command = lib.getExe pkgs.rustfmt;
+        }
+        {
+          name = "elixir";
+          language-server.command = lib.getExe pkgs.elixir_ls;
+        }
+      ];
+    };
   };
 
 }

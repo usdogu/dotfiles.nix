@@ -41,11 +41,8 @@ in {
     wget
     clang
 
-    nil
-
     rustc
     cargo
-    rust-analyzer
     lsd
     rm-improved
     gtk-engine-murrine
@@ -58,7 +55,6 @@ in {
 
     #elixir things
     elixir
-    elixir_ls
     inotify-tools
 
     python-with-my-packages

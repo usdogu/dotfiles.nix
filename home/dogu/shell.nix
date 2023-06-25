@@ -51,6 +51,7 @@
       }
     ];
   };
+
   home.sessionPath =
     [ "$HOME/.cargo/bin" "$HOME/bin" "$HOME/bin/zig" "$HOME/.local/bin" ];
 

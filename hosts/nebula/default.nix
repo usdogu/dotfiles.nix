@@ -21,7 +21,6 @@
         enable = true;
         theme = "vimix";
       };
-
     };
     supportedFilesystems = [ "ntfs" ];
   };
