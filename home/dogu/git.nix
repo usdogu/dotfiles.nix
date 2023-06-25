@@ -16,6 +16,10 @@
     extraConfig = {
       credential.helper = "store";
       init.defaultBranch = "main";
+      url = {
+        "https://github.com/".insteadOf = "gh:";
+        "https://codeberg.org/".insteadOf = "cerg:";
+      };
     };
   };
 

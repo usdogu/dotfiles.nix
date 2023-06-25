@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.fish = {
@@ -40,6 +40,16 @@
         '';
       };
     };
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "puffer"; # github:nickeb96/puffer-fish
+        src = puffer.src;
+      }
+      {
+        name = "fzf.fish"; # github:PatrickF1/fzf.fish
+        src = fzf-fish.src;
+      }
+    ];
   };
   home.sessionPath =
     [ "$HOME/.cargo/bin" "$HOME/bin" "$HOME/bin/zig" "$HOME/.local/bin" ];
@@ -190,7 +200,10 @@
 
   programs.zoxide.enable = true;
 
-  programs.skim.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = false;
+  };
 
   xdg.enable = true;
 }
