@@ -19,7 +19,7 @@
       nix-cleanup =
         "home-manager expire-generations '-1 day'; s nix-collect-garbage -d; nix-collect-garbage -d; s nix-store --optimize";
       man = "batman";
-      devmux = "tmuxinator start dev";
+      devmux = "zellij --layout dev";
     };
     shellAbbrs = { sv = "sudo -e"; };
     shellInit = ''
@@ -107,14 +107,33 @@
     flags = [ "--disable-up-arrow" ];
   };
 
-  programs.tmux = {
+  programs.zellij = {
     enable = true;
-    tmuxinator.enable = true;
+    settings = {
+      on_force_close = "quit";
+      mouse_mode = false;
+      copy_on_select = false;
+      pane_frames = false;
+      default_layout = "compact";
+    };
   };
 
-  home.file.".tmux.conf".source = ./configs/tmux/.tmux.conf;
-  home.file.".tmux.conf.local".source = ./configs/tmux/.tmux.conf.local;
-  xdg.configFile."tmuxinator/dev.yml".source = ./configs/tmux/dev.yml;
+  xdg.configFile."zellij/layouts/dev.kdl".text = ''
+    layout {
+      tab name="edit" {
+        pane command="hx"
+        pane size=1 borderless=true {
+          plugin location="zellij:compact-bar"
+        }
+      }
+      tab name="run" {
+        pane
+        pane size=1 borderless=true {
+          plugin location="zellij:compact-bar"
+        }
+      }
+    }
+  '';
 
   programs.alacritty = {
     enable = true;
