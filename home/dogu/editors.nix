@@ -54,20 +54,27 @@
       };
     };
     languages = {
-      language = [
+      language = with pkgs; [
         {
           name = "nix";
-          language-server.command = lib.getExe pkgs.nil;
-          formatter.command = lib.getExe pkgs.nixfmt;
+          language-server.command = lib.getExe nil;
+          formatter.command = lib.getExe nixfmt;
         }
         {
           name = "rust";
-          language-server.command = lib.getExe pkgs.rust-analyzer;
-          formatter.command = lib.getExe pkgs.rustfmt;
+          language-server.command = lib.getExe rust-analyzer;
+          formatter.command = lib.getExe rustfmt;
         }
         {
           name = "elixir";
-          language-server.command = lib.getExe pkgs.elixir_ls;
+          language-server.command = lib.getExe elixir-ls;
+        }
+        {
+          name = "c";
+          language-server = {
+            command = "${clang-tools}/bin/clangd";
+            clangd.fallbackFlags = [ "-std=c++2b" ];
+          };
         }
       ];
     };

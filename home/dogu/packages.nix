@@ -73,5 +73,6 @@ in {
     home-manager
     inputs.self.packages."${pkgs.system}".spotify-adblock
     wf-recorder # obs but lighter and for wayland
+    fzf
   ];
 }
