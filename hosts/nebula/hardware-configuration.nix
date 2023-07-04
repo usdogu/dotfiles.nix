@@ -15,9 +15,7 @@
     "usbhid"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ "8821cu" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.rtl8821cu ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/292cab59-b832-4d1f-84aa-9c74534cdeda";

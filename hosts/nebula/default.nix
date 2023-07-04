@@ -1,17 +1,17 @@
-# configuration.nix
-
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./xorg.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./xorg.nix ];
 
-  # Use the systemd-boot
   boot = {
     tmp.cleanOnBoot = true;
+    extraModprobeConfig = ''
+      options kvm_intel nested=1
+      options kvm_intel emulate_invalid_guest_state=0
+      options kvm ignore_msrs=1
+    '';
+    initrd.kernelModules = [ "8821cu" ];
+    extraModulePackages = [ config.boot.kernelPackages.rtl8821cu ];
     loader = {
       grub.enable = true;
       grub.device = "/dev/sdb";
