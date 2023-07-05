@@ -25,5 +25,5 @@ jobs:
           prerelease: true
           title: Latest release
           files:
-            build-iso-result/iso/bootstrap-*.iso
+            build-iso-result/iso/*.iso
 
