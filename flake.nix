@@ -26,6 +26,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     }; # NOTE: use github:nix-systems if you ever happen to have a chance of using macos
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -49,6 +53,11 @@
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
+        };
+        packages.iso = inputs.nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          modules = [ ./hosts/iso/default.nix ];
+          format = "iso";
         };
       };
     };

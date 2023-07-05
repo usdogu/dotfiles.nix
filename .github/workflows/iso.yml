@@ -1,0 +1,29 @@
+name: "Build ISO"
+on:
+  push:
+    paths:
+      - "flake.lock"
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixpkgs-unstable
+      - name: Build ISO
+        id: build-iso
+        run: |
+          nix build .#nixos-image-install-iso-bootstrap --out-link build-iso-result
+      - name: Create release
+        if: github.ref == 'refs/heads/master'
+        id: create-release
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: latest
+          prerelease: true
+          title: Latest release
+          files:
+            build-iso-result/iso/bootstrap-*.iso
+

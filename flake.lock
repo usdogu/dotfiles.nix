@@ -161,6 +161,42 @@
         "type": "github"
       }
     },
+    "nixlib": {
+      "locked": {
+        "lastModified": 1688259758,
+        "narHash": "sha256-CYVbYQfIm3vwciCf6CCYE+WOOLE3vcfxfEfNHIfKUJQ=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "a92befce80a487380ea5e92ae515fe33cebd3ac6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixos-generators": {
+      "inputs": {
+        "nixlib": "nixlib",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1688349424,
+        "narHash": "sha256-/wRCJP2d9ZmfZKrREWthpDHIx/F02Z1J2bytbC+gUiU=",
+        "owner": "nix-community",
+        "repo": "nixos-generators",
+        "rev": "cf341a2c94338eed91c35df291931ea775b31e99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixos-generators",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1688465017,
@@ -209,6 +245,7 @@
         "flake-parts": "flake-parts",
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
+        "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks"
       }
