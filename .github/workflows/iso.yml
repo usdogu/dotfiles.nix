@@ -14,7 +14,7 @@ jobs:
       - name: Build ISO
         id: build-iso
         run: |
-          nix build .#nixos-image-install-iso-bootstrap --out-link build-iso-result
+          nix build .#iso --out-link build-iso-result
       - name: Create release
         if: github.ref == 'refs/heads/master'
         id: create-release
