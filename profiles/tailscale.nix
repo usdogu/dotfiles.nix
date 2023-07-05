@@ -30,6 +30,7 @@
       # otherwise authenticate with tailscale
       ${config.services.tailscale.package}/bin/tailscale up \
         --authkey file:${config.age.secrets.tailscaleAuthKey.path} \
+        --ssh \
         --hostname=${config.networking.hostName}
     '';
   };

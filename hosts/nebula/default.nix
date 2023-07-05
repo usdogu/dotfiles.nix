@@ -14,7 +14,7 @@
     extraModulePackages = [ config.boot.kernelPackages.rtl8821cu ];
     loader = {
       grub.enable = true;
-      grub.device = "/dev/sdb";
+      grub.device = "/dev/sda";
       grub.useOSProber = true;
 
       grub2-theme = {

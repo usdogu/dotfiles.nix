@@ -18,7 +18,7 @@
   boot.kernelModules = [ "kvm-amd" ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/292cab59-b832-4d1f-84aa-9c74534cdeda";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
