@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
+  environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   environment.etc = {
     "nix/flake-channels/nixpkgs".source = inputs.nixpkgs;
     "nix/flake-channels/home-manager".source = inputs.home-manager;
