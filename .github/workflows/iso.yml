@@ -16,7 +16,7 @@ jobs:
         run: |
           nix build .#iso --out-link build-iso-result
       - name: Create release
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         id: create-release
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
