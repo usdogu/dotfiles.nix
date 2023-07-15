@@ -30,6 +30,17 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
+      inputs.flake-compat.follows = "pre-commit-hooks/flake-compat";
+    };
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
+    };
   };
 
   outputs = inputs:

@@ -1,1 +1,1 @@
-{ home-manager = { users.dogu = import ./dogu; }; }
+{ home-manager.users.dogu = import ./dogu; }

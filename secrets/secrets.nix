@@ -2,6 +2,8 @@ let
   systems = {
     nebula =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK7ONHC8HZwDelLov+0WrZsJWJ/ZYc+L3wblatse7VX3";
+    wsl =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICUnersVmrLC8TLyF1rFmg4+BYOhWtz/7qPmt/OodNbo";
   };
   users = {
     dogu =
