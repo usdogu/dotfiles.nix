@@ -9,5 +9,6 @@
     ./gtk-qt.nix
     ./browser.nix
     ./sway.nix
+    ./shell.nix
   ];
 }
