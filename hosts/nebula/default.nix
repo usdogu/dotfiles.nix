@@ -41,6 +41,8 @@
   };
   services.resolved.enable = lib.mkForce false; # just in case
   systemd.services.NetworkManager-wait-online.enable = false;
+  environment.variables.http_proxy = "http://192.168.43.1:7071";
+  environment.variables.https_proxy = "https://192.168.43.1:7071";
 
   services.dnscrypt-proxy2 = {
     enable = true;
@@ -116,6 +118,7 @@
     noPass = true;
     keepEnv = true;
   }];
+  security.sudo.wheelNeedsPassword = false;
 
   users.users.dogu = {
     isNormalUser = true;
