@@ -4,13 +4,13 @@ A nix flake that holds all of the system configurations of my personal
 machines.
 
 ** Configurations & Modules
-| Name     | Description                                               |
-|----------+-----------------------------------------------------------|
-| [[./hosts][Hosts]]    | Host specific configurations (system-wide & Home-Manager) |
-| [[.profiles][Profiles]] | Shared system-wide configurations between hosts           |
-| [[./home][Home]]     | Shared Home-Manager configurations between hosts          |
+| Name     |                        Description                                        |
+|----------+---------------------------------------------------------------------------|
+| [[./hosts][Hosts]]       | Host specific configurations (system-wide & Home-Manager) |
+| [[.profiles][Profi les]] | Shared system-wide configurations between hosts           |
+| [[./home][Home]]         | Shared Home-Manager configurations between hosts          |
 | [[./packages][Packages]] | Modified nixpkgs packages and custom packages             |
-| [[./lib][Lib]]      | libraries, tools and functions used in across this repo   |
+| [[./dev][Dev]]           | Devshell, deployment tool, etc                            |
 
 ** Hosts
 
