@@ -39,7 +39,6 @@
     networkmanager.dns = "none";
     nameservers = [ "127.0.0.1" "::1" ];
   };
-  services.resolved.enable = lib.mkForce false; # just in case
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services.dnscrypt-proxy2 = {
@@ -80,7 +79,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
+    helix
     git
     qt5.qtwayland
     virt-manager
@@ -121,7 +120,7 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" ];
     shell = pkgs.fish;
   };
-  programs.fish = { enable = true; };
+  programs.fish.enable = true;
 
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
@@ -134,6 +133,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
   system.stateVersion = "23.05";
 }
