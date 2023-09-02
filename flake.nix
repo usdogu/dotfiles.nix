@@ -8,10 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
+    ragenix = {
+      url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -60,7 +60,7 @@
           nil.enable = true;
         };
         devShells.default = pkgs.mkShellNoCC {
-          packages = [ inputs'.agenix.packages.agenix ];
+          packages = [ inputs'.ragenix.packages.ragenix ];
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';

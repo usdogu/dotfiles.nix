@@ -8,7 +8,7 @@
       extraSpecialArgs.headless = false;
       home-manager = true;
       extraModules = [
-        inputs.agenix.nixosModules.age
+        inputs.ragenix.nixosModules.age
         inputs.grub2-themes.nixosModules.default
       ];
     };
@@ -18,7 +18,7 @@
       extraSpecialArgs.headless = true;
       home-manager = true;
       extraModules =
-        [ inputs.nixos-wsl.nixosModules.wsl inputs.agenix.nixosModules.age ];
+        [ inputs.nixos-wsl.nixosModules.wsl inputs.ragenix.nixosModules.age ];
       extraHomeModules = [ inputs.vscode-server.homeModules.default ];
     };
   };

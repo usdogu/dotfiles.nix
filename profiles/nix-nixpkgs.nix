@@ -9,16 +9,14 @@
 
   nix = {
     package = pkgs.nixUnstable;
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-      home-manager.flake = inputs.home-manager;
-    };
-    nixPath = [
-      "nixpkgs=/etc/nix/flake-channels/nixpkgs"
-      "home-manager=/etc/nix/flake-channels/home-manager"
-    ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    channel.enable = false;
+    nixPath = [ "nixpkgs=flake:nixpkgs" ];
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features =
+        [ "nix-command" "flakes" "cgroups" "auto-allocate-uids" "repl-flake" ];
+      use-cgroups = true;
+      auto-allocate-uids = true;
       builders-use-substitutes = true;
       auto-optimise-store = true;
       warn-dirty = false;

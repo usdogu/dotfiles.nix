@@ -1,6 +1,8 @@
 name: "Push to cache"
 on:
   push:
+    paths:
+      - "flake.lock"
 jobs:
   cache:
     runs-on: ubuntu-latest

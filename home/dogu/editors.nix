@@ -37,22 +37,18 @@
       language = with pkgs; [
         {
           name = "nix";
-          language-server.command = lib.getExe nil;
+          language-server.command = lib.getExe' nixd "nixd";
           formatter.command = lib.getExe nixfmt;
         }
         {
           name = "rust";
           language-server.command = lib.getExe rust-analyzer;
-          formatter.command = lib.getExe rustfmt;
-        }
-        {
-          name = "elixir";
-          language-server.command = lib.getExe elixir-ls;
+          formatter.command = lib.getExe' rustfmt "rustfmt";
         }
         {
           name = "c";
           language-server = {
-            command = "${clang-tools}/bin/clangd";
+            command = lib.getExe' clang-tools "clangd";
             clangd.fallbackFlags = [ "-std=c++2b" ];
           };
         }

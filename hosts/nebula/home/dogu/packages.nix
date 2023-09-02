@@ -5,7 +5,6 @@
     rustc
     cargo
     gtk-engine-murrine
-    elixir
     inotify-tools
     pavucontrol
     mpv
