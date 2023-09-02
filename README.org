@@ -14,8 +14,8 @@ machines.
 
 ** Hosts
 
-| Name   | Description                                                                     |
-|--------+---------------------------------------------------------------------------------|
+| Name   |                                       Description                                               |
+|--------+-------------------------------------------------------------------------------------------------|
 | [[./hosts/nebula][Nebula]] | My desktop running a AMD FX-8320, 16GB of RAM and an AMD ATI Radeon HD 4350 |
 
 ** Thanks
