@@ -1,9 +1,7 @@
-{ ... }:
-
-{
+{ inputs, ... }: {
   perSystem = { pkgs, lib, ... }: {
     packages = lib.genAttrs
-      (lib.remove "default.nix" (lib.attrNames (builtins.readDir ./.)))
+      (lib.remove "flake-module.nix" (lib.attrNames (builtins.readDir ./.)))
       (p: pkgs.callPackage ./${p} { });
   };
 }

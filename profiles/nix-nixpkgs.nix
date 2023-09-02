@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
+{ pkgs, ... }:
 
 {
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";

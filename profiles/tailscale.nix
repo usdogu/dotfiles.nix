@@ -1,4 +1,5 @@
-{ pkgs, lib, config, inputs, ... }:
+{ inputs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   services.tailscale.enable = true;

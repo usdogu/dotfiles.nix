@@ -242,34 +242,6 @@
         "type": "github"
       }
     },
-    "nixos-wsl": {
-      "inputs": {
-        "flake-compat": [
-          "pre-commit-hooks",
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "pre-commit-hooks",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1692543835,
-        "narHash": "sha256-1fR7+IhSSEHRbRW1w3nXb38/4kFfpmCDzMsK+ApqZCk=",
-        "owner": "nix-community",
-        "repo": "nixos-wsl",
-        "rev": "faab3194692c5b6b351e33fc8d5e7f15f22d1d15",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixos-wsl",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1693500674,
@@ -345,11 +317,9 @@
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "nixos-generators": "nixos-generators",
-        "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
-        "ragenix": "ragenix",
-        "vscode-server": "vscode-server"
+        "ragenix": "ragenix"
       }
     },
     "rust-overlay": {
@@ -389,30 +359,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "vscode-server": {
-      "inputs": {
-        "flake-utils": [
-          "pre-commit-hooks",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1684517665,
-        "narHash": "sha256-SaAr66uCQ8CF75jIr23FZjk1+9Kfwm5sQnwV25206Gs=",
-        "owner": "nix-community",
-        "repo": "nixos-vscode-server",
-        "rev": "1e1358493df6529d4c7bc4cc3066f76fd16d4ae6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixos-vscode-server",
         "type": "github"
       }
     }

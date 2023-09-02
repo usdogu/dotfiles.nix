@@ -30,27 +30,16 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-wsl = {
-      url = "github:nix-community/nixos-wsl";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
-      inputs.flake-compat.follows = "pre-commit-hooks/flake-compat";
-    };
-    vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
-    };
   };
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       imports = [
-        ./packages
-        ./lib
-        ./hosts
-        ./devel
+        ./profiles/flake-module.nix
+        ./packages/flake-module.nix
+        ./hosts/flake-module.nix
+        ./dev/flake-module.nix
         inputs.pre-commit-hooks.flakeModule
       ];
 

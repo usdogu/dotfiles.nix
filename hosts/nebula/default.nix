@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./xorg.nix ];
+  imports = [ ./hardware-configuration.nix ./home ];
 
   boot = {
     tmp.cleanOnBoot = true;
@@ -85,8 +85,6 @@
     qt5.qtwayland
     virt-manager
   ];
-
-  services = { openssh.enable = true; };
 
   security.polkit.enable = true;
   security.rtkit.enable = true;

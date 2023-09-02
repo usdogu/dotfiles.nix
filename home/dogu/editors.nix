@@ -37,7 +37,7 @@
       language = with pkgs; [
         {
           name = "nix";
-          language-server.command = lib.getExe' nixd "nixd";
+          language-server.command = lib.getExe nil;
           formatter.command = lib.getExe nixfmt;
         }
         {

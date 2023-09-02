@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  perSystem = { pkgs, inputs', lib, ... }: {
+  perSystem = { pkgs, lib, ... }: {
     apps = lib.mapAttrs' (host: cfg: {
       name = "deploy-${host}";
       value.program = toString (pkgs.writeShellScript "deploy-${host}" ''
