@@ -114,6 +114,10 @@
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" ];
     shell = pkgs.fish;
   };
+  services.getty.autologinUser = "dogu";
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && sway
+  '';
   programs.fish.enable = true;
 
   programs.dconf.enable = true;
