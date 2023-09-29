@@ -7,22 +7,21 @@ let
 
   spotify-adblock = rustPlatform.buildRustPackage rec {
     pname = "spotify-adblock";
-    version = "1.0.2-unstable-2023-04-09";
+    version = "1.0.3";
 
     doCheck = false;
 
     src = fetchFromGitHub {
       owner = "abba23";
       repo = pname;
-      #rev = version;
-      rev = "22847a7bfa87edf4ca58ee950fd8977d20f0d337";
-      sha256 = "sha256-5tZ+Y7dhzb6wmyQ+5FIJDHH0KqkXbiB259Yo7ATGjSU=";
+      rev = "5a3281dee9f889afdeea7263558e7a715dcf5aab";
+      sha256 = "sha256-UzpHAHpQx2MlmBNKm2turjeVmgp5zXKWm3nZbEo0mYE=";
     };
 
     configUrl =
       "https://raw.githubusercontent.com/${src.owner}/${src.repo}/main/config.toml";
 
-    cargoSha256 = "sha256-cergN3x/iQO5GlBmvgNsmSyh8XVEbNPMYhixvf3HGWI=";
+    cargoSha256 = "sha256-wPV+ZY34OMbBrjmhvwjljbwmcUiPdWNHFU3ac7aVbIQ=";
 
     postInstall = ''
       mkdir -p $out/etc/spotify-adblock
@@ -44,9 +43,6 @@ else
   stdenv.mkDerivation {
     inherit (spotify-adblock) pname version;
     buildInputs = [ spotify-adblock spotify wget ];
-    # TODO better. move bash code to multiline nix string
-    # TODO git commit: set author/committer name/email
-    # TODO init config from $out/etc/spotify-adblock/config.toml
     buildCommand = ''
       mkdir -p $out/bin
       cp ${spotify}/bin/spotify $out/bin/spotify-adblock
