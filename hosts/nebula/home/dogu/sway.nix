@@ -48,6 +48,12 @@
         ];
       };
 
+      startup = [{
+        command =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        always = true;
+      }];
+
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
         menu = config.wayland.windowManager.sway.config.menu;
