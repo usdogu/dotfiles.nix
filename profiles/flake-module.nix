@@ -3,7 +3,7 @@
     ssh = ./ssh.nix;
     xorg = ./xorg.nix;
     upgrade-diff = ./xorg.nix;
-    tailscale = import ./tailscale.nix { inherit inputs; };
+    tailscale = ./tailscale.nix;
     nix-nixpkgs = import ./nix-nixpkgs.nix { inherit inputs; };
   };
 }
