@@ -14,7 +14,7 @@ let
       home-manager = {
         useGlobalPkgs = true;
         extraSpecialArgs = { inherit inputs; };
-        users.dogu = import "${inputs.self}/home/dogu";
+        users.dogu = import ../home/dogu;
       };
     }
   ];
@@ -23,7 +23,7 @@ let
       // ({
         specialArgs = { inherit inputs; } // args.specialArgs or { };
         modules = [
-          "${inputs.self}/hosts/${args.hostName}"
+          ./${args.hostName}
           { networking = { inherit (args) hostName; }; }
         ] ++ commonProfiles ++ (args.modules or [ ]);
       })));
