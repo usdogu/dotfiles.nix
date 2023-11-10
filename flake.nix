@@ -47,6 +47,8 @@
         pre-commit.settings.hooks = {
           nixfmt.enable = true;
           nil.enable = true;
+          deadnix.enable = true;
+          statix.enable = true;
         };
         devShells.default = pkgs.mkShellNoCC {
           packages = [ inputs'.ragenix.packages.ragenix ];
