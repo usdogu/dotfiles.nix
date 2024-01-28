@@ -49,6 +49,10 @@
         name = "fzf.fish"; # github:PatrickF1/fzf.fish
         src = fzf-fish.src;
       }
+      {
+        name = "autopair"; # github:jorgebucaran/autopair.fish
+        src = autopair.src;
+      }
     ];
   };
 
