@@ -18,15 +18,16 @@ let
   nixosSystemWithDefaults = args:
     (inputs.nixpkgs.lib.nixosSystem ((builtins.removeAttrs args [ "hostName" ])
       // {
-        specialArgs = { inherit inputs; } // args.specialArgs or { };
-        modules = [
+      specialArgs = { inherit inputs; } // args.specialArgs or { };
+      modules = [
 
-          ./${args.hostName}
-          { networking = { inherit (args) hostName; }; }
-        ] ++ commonProfiles ++ (args.modules or [ ]);
-      }));
+        ./${args.hostName}
+        { networking = { inherit (args) hostName; }; }
+      ] ++ commonProfiles ++ (args.modules or [ ]);
+    }));
 
-in {
+in
+{
   flake.nixosConfigurations = {
     nebula = nixosSystemWithDefaults {
       system = "x86_64-linux";

@@ -1,3 +1,4 @@
+{ pkgs, lib, ... }:
 {
   programs.helix = {
     enable = true;
@@ -30,6 +31,23 @@
           G = "goto_last_line";
         };
       };
+    };
+    languages = {
+      language-server = {
+        typescript-language-server = with pkgs.nodePackages; {
+          command = lib.getExe typescript-language-server;
+          args = [ "--stdio" ];
+        };
+        nixd.command = lib.getExe pkgs.nixd;
+
+      };
+      language = [
+        {
+          name = "nix";
+          formatter.command = lib.getExe pkgs.nixpkgs-fmt;
+          language-servers = [ "nixd" ];
+        }
+      ];
     };
   };
 

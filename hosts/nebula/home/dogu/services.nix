@@ -4,7 +4,8 @@ let
   h = 60 * m;
   d = 24 * h;
   y = 365 * d;
-in {
+in
+{
   services = {
     gnome-keyring.enable = true;
     gpg-agent = {

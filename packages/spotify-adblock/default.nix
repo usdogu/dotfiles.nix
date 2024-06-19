@@ -1,4 +1,8 @@
-{ lib, stdenv, rustPlatform, fetchFromGitHub, spotify # unfree
+{ lib
+, stdenv
+, rustPlatform
+, fetchFromGitHub
+, spotify # unfree
 , wget
 , wrapSpotify ? true # set to false if you need only lib/libspotifyadblock.so
 }:
@@ -36,7 +40,8 @@ let
     };
   };
 
-in if (!wrapSpotify) then
+in
+if (!wrapSpotify) then
   spotify-adblock
 else
 

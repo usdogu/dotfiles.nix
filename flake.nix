@@ -48,7 +48,7 @@
 
       perSystem = { config, pkgs, inputs', ... }: {
         pre-commit.settings.hooks = {
-          nixfmt.enable = true;
+          nixpkgs-fmt.enable = true;
           nil.enable = true;
           deadnix.enable = true;
           statix.enable = true;

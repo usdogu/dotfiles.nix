@@ -9,4 +9,5 @@ let
   };
   allUsers = builtins.attrValues users;
   allSystems = builtins.attrValues systems;
-in { "tailscaleAuthKey.age".publicKeys = allUsers ++ allSystems; }
+in
+{ "tailscaleAuthKey.age".publicKeys = allUsers ++ allSystems; }

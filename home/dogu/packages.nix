@@ -10,5 +10,7 @@
     jaq # alternative for jq
     home-manager
     fzf
+    gh
+    bun
   ];
 }
