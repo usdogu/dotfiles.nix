@@ -13,8 +13,10 @@
     '';
   };
   home.sessionVariablesExtra = ''
-    if [[ -z "$SSH_AUTH_SOCK" ]]; then
-      export SSH_AUTH_SOCK="$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)"
-    fi
+    export SSH_AUTH_SOCK="$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)"
+  '';
+  programs.fish.interactiveShellInit = ''
+    set -gx GPG_TTY (tty)
+    ${pkgs.gnupg}/bin/gpg-connect-agent updatestartuptty /bye > /dev/null
   '';
 }

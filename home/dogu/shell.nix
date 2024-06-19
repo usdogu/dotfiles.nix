@@ -5,7 +5,6 @@
     fish = {
       enable = true;
       shellAliases = {
-        cd = "z";
         cls = "clear";
         ls = "lsd";
         la = "lsd -A";
@@ -22,7 +21,6 @@
       shellAbbrs = { sv = "sudo -e"; };
       shellInit = ''
         set -gx COLORTERM truecolor
-        set -gx GPG_TTY (tty)
         set -U fish_greeting
       '';
       functions = {
@@ -117,7 +115,10 @@
         default_layout = "compact";
       };
     };
-    zoxide.enable = true;
+    zoxide = {
+      enable = true;
+      options = [ "--cmd cd" ];
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
