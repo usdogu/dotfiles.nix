@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
   imports = [
     ./packages.nix
     ./programs.nix
@@ -10,5 +10,6 @@
     ./browser.nix
     ./sway.nix
     ./shell.nix
+    ./services.nix
   ];
 }

@@ -1,6 +1,9 @@
 { pkgs, inputs, ... }: {
 
   home.packages = with pkgs; [
+    file
+    ps_mem
+    killall
     clang
     rustc
     cargo
