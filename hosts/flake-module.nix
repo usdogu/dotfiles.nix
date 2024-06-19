@@ -41,7 +41,7 @@ in {
   };
 
   flake.darwinConfigurations = {
-    mek = inputs.darwin.lib.darwinSystem {
+    dou-mek = inputs.darwin.lib.darwinSystem {
       specialArgs = { inherit inputs; };
       system = "aarch64-darwin";
       modules = commonHome ++ [

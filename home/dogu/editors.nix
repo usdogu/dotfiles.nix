@@ -1,5 +1,3 @@
-{ lib, pkgs, ... }:
-
 {
   programs.helix = {
     enable = true;
@@ -32,27 +30,6 @@
           G = "goto_last_line";
         };
       };
-    };
-    languages = {
-      language = with pkgs; [
-        {
-          name = "nix";
-          language-server.command = lib.getExe nil;
-          formatter.command = lib.getExe nixfmt;
-        }
-        {
-          name = "rust";
-          language-server.command = lib.getExe rust-analyzer;
-          formatter.command = lib.getExe rustfmt;
-        }
-        {
-          name = "c";
-          language-server = {
-            command = lib.getExe' clang-tools "clangd";
-            clangd.fallbackFlags = [ "-std=c++2b" ];
-          };
-        }
-      ];
     };
   };
 
