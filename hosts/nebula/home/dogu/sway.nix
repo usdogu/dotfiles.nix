@@ -55,8 +55,8 @@
       }];
 
       keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-        menu = config.wayland.windowManager.sway.config.menu;
+        inherit (config.wayland.windowManager.sway.config) modifier;
+        inherit (config.wayland.windowManager.sway.config) menu;
       in lib.mkOptionDefault {
         "${modifier}+Shift+c" = "kill";
         "${modifier}+Shift+r" = "reload";

@@ -43,7 +43,7 @@
         {
           name = "rust";
           language-server.command = lib.getExe rust-analyzer;
-          formatter.command = lib.getExe' rustfmt "rustfmt";
+          formatter.command = lib.getExe rustfmt;
         }
         {
           name = "c";

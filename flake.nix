@@ -11,7 +11,6 @@
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "pre-commit-hooks/flake-utils";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -30,11 +29,15 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
       imports = [
         ./profiles/flake-module.nix
         ./packages/flake-module.nix

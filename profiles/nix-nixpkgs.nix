@@ -1,5 +1,5 @@
 { inputs, ... }:
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
@@ -9,19 +9,19 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
-    channel.enable = false;
-    nixPath = [ "nixpkgs=flake:nixpkgs" ];
+    nixPath = lib.singleton config.nix.settings.nix-path;
+    #channels.enable = false;
     settings = {
+      nix-path = "nixpkgs=flake:nixpkgs";
       experimental-features =
-        [ "nix-command" "flakes" "cgroups" "auto-allocate-uids" "repl-flake" ];
-      use-cgroups = true;
+        [ "nix-command" "flakes" "cgroups" "auto-allocate-uids" ];
       auto-allocate-uids = true;
       builders-use-substitutes = true;
       auto-optimise-store = true;
       warn-dirty = false;
-      trusted-users = [ "@wheel" ];
+      trusted-users = [ "@wheel" "dogu" ];
       substituters =
         [ "https://nix-community.cachix.org" "https://usdogu.cachix.org" ];
       trusted-public-keys = [

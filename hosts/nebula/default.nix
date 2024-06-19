@@ -13,9 +13,11 @@
     initrd.kernelModules = [ "8821cu" ];
     extraModulePackages = [ config.boot.kernelPackages.rtl8821cu ];
     loader = {
-      grub.enable = true;
-      grub.device = "/dev/sdb";
-      grub.useOSProber = true;
+      grub = {
+        enable = true;
+        device = "/dev/sdb";
+        useOSProber = true;
+      };
 
       grub2-theme = {
         enable = true;
@@ -40,29 +42,37 @@
     nameservers = [ "127.0.0.1" "::1" ];
   };
   systemd.services.NetworkManager-wait-online.enable = false;
-
-  services.dnscrypt-proxy2 = {
-    enable = true;
-    settings = {
-      bootstrap_resolvers = [ "1.1.1.1:53" "8.8.8.8:53" ];
-      server_names = [ "cloudflare" ];
-      sources.public-resolvers = {
-        urls = [
-          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
-          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-        ];
-        minisign_key =
-          "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+  services = {
+    dnscrypt-proxy2 = {
+      enable = true;
+      settings = {
+        bootstrap_resolvers = [ "1.1.1.1:53" "8.8.8.8:53" ];
+        server_names = [ "cloudflare" ];
+        sources.public-resolvers = {
+          urls = [
+            "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+            "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+          ];
+          minisign_key =
+            "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+        };
       };
     };
-  };
-  systemd.services.dnscrypt-proxy2.serviceConfig = {
-    StateDirectory = "dnscrypt-proxy";
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ brgenml1cupswrapper ];
+    };
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+    };
+    getty.autologinUser = "dogu";
   };
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [ brgenml1cupswrapper ];
+  systemd.services.dnscrypt-proxy2.serviceConfig = {
+    StateDirectory = "dnscrypt-proxy";
   };
 
   nix.settings.trusted-users = [ "dogu" ];
@@ -72,21 +82,9 @@
     keyMap = "trq";
   };
 
-  environment.systemPackages = with pkgs; [
-    helix
-    git
-    qt5.qtwayland
-    virt-manager
-  ];
-
-  security.polkit.enable = true;
-  security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
   };
 
   hardware.opengl = {
@@ -95,32 +93,35 @@
     driSupport32Bit = true;
   };
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
   };
 
-  security.doas.enable = true;
-  security.doas.extraRules = [{
-    users = [ "dogu" ];
-    noPass = true;
-    keepEnv = true;
-  }];
-  security.sudo.wheelNeedsPassword = false;
+  security = {
+    doas = {
+      enable = true;
+      extraRules = [{
+        users = [ "dogu" ];
+        noPass = true;
+        keepEnv = true;
+      }];
+    };
+    sudo.wheelNeedsPassword = false;
+  };
 
   users.users.dogu = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" ];
     shell = pkgs.fish;
   };
-  services.getty.autologinUser = "dogu";
-  environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway
-  '';
-  programs.fish.enable = true;
-
-  programs.dconf.enable = true;
+  programs = {
+    fish.enable = true;
+    dconf.enable = true;
+  };
   services.dbus.packages = [ pkgs.gcr ];
   services.fstrim.enable = true;
   # allow swaylock to unlock session
@@ -131,6 +132,12 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  environment.variables.EDITOR = "hx";
+  environment = {
+    variables.EDITOR = "hx";
+    loginShellInit = ''
+      [[ "$(tty)" == /dev/tty1 ]] && sway
+    '';
+    systemPackages = with pkgs; [ helix git qt5.qtwayland virt-manager ];
+  };
   system.stateVersion = "23.05";
 }

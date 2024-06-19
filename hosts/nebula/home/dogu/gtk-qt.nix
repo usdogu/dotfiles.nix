@@ -5,7 +5,7 @@
     enable = true;
     font = {
       name = "Iosevka Medium Italic 12";
-      package = (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; });
+      package = pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; };
     };
     iconTheme = {
       name = "oomox-gruvbox-dark";
