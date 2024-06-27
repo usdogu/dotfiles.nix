@@ -28,6 +28,9 @@
     };
     taps = [ "vladkens/tap" "nikitabobko/tap" ];
     brews = [ "fnm" ];
-    casks = [ "cloudflare-warp" "stats" "surfshark" "visual-studio-code" "aldente" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" ];
+    casks = [ "cloudflare-warp" "stats" "surfshark" "visual-studio-code" "aldente" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" "swiftformat-for-xcode" ];
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 }
