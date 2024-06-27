@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 let
   m = 60;
   h = 60 * m;
@@ -12,7 +12,7 @@ in
       enable = true;
       enableSshSupport = true;
       sshKeys = [ "310A8B8E991418079ABC4E97900A617A81B0121F" ];
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
       defaultCacheTtl = 12 * h;
       defaultCacheTtlSsh = 12 * h;
       maxCacheTtl = 100 * y;
