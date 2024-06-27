@@ -7,7 +7,7 @@ machines.
 | Name     |                        Description                                        |
 |----------+---------------------------------------------------------------------------|
 | [[./hosts][Hosts]]       | Host specific configurations (system-wide & Home-Manager) |
-| [[.profiles][Profi les]] | Shared system-wide configurations between hosts           |
+| [[.profiles][Profiles]] | Shared system-wide configurations between hosts           |
 | [[./home][Home]]         | Shared Home-Manager configurations between hosts          |
 | [[./packages][Packages]] | Modified nixpkgs packages and custom packages             |
 | [[./dev][Dev]]           | Devshell, deployment tool, etc                            |
@@ -17,7 +17,7 @@ machines.
 | Name   |                                       Description                                               |
 |--------+-------------------------------------------------------------------------------------------------|
 | [[./hosts/nebula][Nebula]] | My desktop running a AMD FX-8320, 16GB of RAM and an AMD ATI Radeon HD 4350 |
-| [[./hosts/m1][M1]] | M1 MacBook Air with 8GB of RAM AND 256GB of storage
+| [[./hosts/m1][M1]] | M1 MacBook Air with 8GB of RAM and 256GB of storage
 
 ** Thanks
 [[https://github.com/Kranzes][@Kranzes]] - I basically copy pasted and edited his [[https://github.com/Kranzes/nix-config][config]]
