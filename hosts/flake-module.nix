@@ -4,7 +4,6 @@ let
   commonProfiles = with inputs.self.nixosModules; [
     nix-nixpkgs
     ssh
-    tailscale
     upgrade-diff
   ];
 
@@ -34,7 +33,7 @@ in
       hostName = "nebula";
       modules = commonHome ++ [
         inputs.home-manager.nixosModule
-        inputs.ragenix.nixosModules.age
+        # inputs.ragenix.nixosModules.age
         inputs.grub2-themes.nixosModules.default
         inputs.self.nixosModules.xorg
       ];
