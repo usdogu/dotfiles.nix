@@ -16,8 +16,8 @@ machines.
 
 | Name   |                                       Description                                               |
 |--------+-------------------------------------------------------------------------------------------------|
-| [[./hosts/nebula][Nebula]] | My desktop running a AMD FX-8320, 16GB of RAM and an AMD ATI Radeon HD 4350 |
-| [[./hosts/m1][M1]] | M1 MacBook Air with 8GB of RAM and 256GB of storage
+| [[./hosts/nebula][Nebula]] | My desktop running an AMD FX-8320, 16GB of RAM and an AMD ATI Radeon HD 4350|
+| [[./hosts/m1][M1]]         | M1 MacBook Air with 8GB of RAM and 256GB of storage                         |
 
 ** Thanks
 [[https://github.com/Kranzes][@Kranzes]] - I basically copy pasted and edited his [[https://github.com/Kranzes/nix-config][config]]
