@@ -12,7 +12,6 @@
     package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = lib.singleton config.nix.settings.nix-path;
-    #channels.enable = false;
     settings = {
       nix-path = "nixpkgs=flake:nixpkgs";
       experimental-features =
@@ -29,7 +28,9 @@
         "usdogu.cachix.org-1:PKE38ObfSZFZiJUrioXXrcLoxqXX/EZcSDsCTBzd4hc="
       ];
     };
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    channels.enable = false;
   };
 
   nixpkgs.config.allowUnfree = true;
-}
+} 

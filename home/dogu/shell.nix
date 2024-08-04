@@ -22,6 +22,7 @@
       shellInit = ''
         set -gx COLORTERM truecolor
         set -U fish_greeting
+        source ~/.config/fish/functions/ls_on_cd.fish
       '';
       functions = {
         gp = {
@@ -30,6 +31,13 @@
             git add .
             git commit -m $argv
             git push
+          '';
+        };
+        ls_on_cd = {
+          description = "run ls on cd";
+          onVariable = "PWD";
+          body = ''
+            ls
           '';
         };
       };
