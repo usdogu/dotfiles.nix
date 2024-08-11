@@ -27,7 +27,7 @@
       upgrade = true;
     };
     taps = [ "vladkens/tap" "nikitabobko/tap" ];
-    casks = [ "cloudflare-warp" "stats" "surfshark" "visual-studio-code" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" "swiftformat-for-xcode" ];
+    casks = [ "cloudflare-warp" "stats" "surfshark" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" "swiftformat-for-xcode" ];
     masApps = {
       Xcode = 497799835;
       Flow = 1423210932;
