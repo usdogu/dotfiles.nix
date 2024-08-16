@@ -6,8 +6,12 @@
     userName = "Doğu Us";
     userEmail = "uspro@disroot.org";
     delta = {
-      enable = true;
+      enable = false; # 0.17 fails to compile, good chance to try difftastic
       options = { side-by-side = true; };
+    };
+    difftastic = {
+      enable = true;
+      background = "dark";
     };
     signing = {
       key = "A8B0AEA8D751EC27";
