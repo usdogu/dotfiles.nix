@@ -39,7 +39,6 @@
           args = [ "--stdio" ];
         };
         nixd.command = lib.getExe pkgs.nixd;
-
       };
       language = [
         {

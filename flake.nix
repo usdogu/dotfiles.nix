@@ -46,7 +46,12 @@
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = { config, pkgs, ... }: {
+      perSystem = { config, pkgs, system, ... }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
         pre-commit.settings.hooks = {
           nixpkgs-fmt.enable = true;
           nil.enable = true;
