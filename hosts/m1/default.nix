@@ -6,7 +6,7 @@
     hostName = "dou-mek";
     computerName = "Dou's Air";
     dns = [ "1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
-    knownNetworkServices = [ "Wi-Fi" "Thunderbolt Bridge" ];
+    knownNetworkServices = [ "Wi-Fi" "Thunderbolt Bridge" "Tailscale Tunnel" ];
   };
   security.pam.enableSudoTouchIdAuth = true;
   services.nix-daemon.enable = true;
@@ -27,7 +27,7 @@
       upgrade = true;
     };
     taps = [ "vladkens/tap" "nikitabobko/tap" ];
-    casks = [ "cloudflare-warp" "stats" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" "swiftformat-for-xcode" "alacritty" ];
+    casks = [ "cloudflare-warp" "stats" "alt-tab" "appcleaner" "iina" "iterm2" "obs" "orbstack" "orion" "playcover-community" "proxyman" "raycast" "rider" "shottr" "telegram" "swiftformat-for-xcode" "alacritty" "tailscale" ];
     masApps = {
       Xcode = 497799835;
       Flow = 1423210932;
