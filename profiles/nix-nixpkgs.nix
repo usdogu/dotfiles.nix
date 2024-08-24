@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{ pkgs, lib, config, ... }:
+{ inputs, lib, config, ... }:
 
 {
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
@@ -9,7 +8,7 @@
   };
 
   nix = {
-    package = pkgs.nixVersions.latest;
+    monitored.enable = true;
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = lib.singleton config.nix.settings.nix-path;
     channel.enable = true;

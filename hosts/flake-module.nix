@@ -2,9 +2,9 @@
 
 let
   commonProfiles = with inputs.self.nixosModules; [
+    inputs.nix-monitored.nixosModules.default
     nix-nixpkgs
     ssh
-    upgrade-diff
   ];
 
   commonHome = [{
@@ -47,6 +47,7 @@ in
       modules = commonHome ++ [
         inputs.home-manager.darwinModules.home-manager
         inputs.self.nixosModules.nix-nixpkgs
+        inputs.nix-monitored.darwinModules.default
         ./m1
       ];
     };
