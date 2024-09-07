@@ -41,7 +41,10 @@
     networkmanager.dns = "none";
     nameservers = [ "127.0.0.1" "::1" ];
   };
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services = {
+    NetworkManager-wait-online.enable = false;
+    dnscrypt-proxy2.serviceConfig.StateDirectory = "dnscrypt-proxy";
+  };
   services = {
     dnscrypt-proxy2 = {
       enable = true;
@@ -55,31 +58,33 @@
           ];
           minisign_key =
             "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+          cache_file = "public-resolvers.md";
+
         };
       };
     };
+
     printing = {
       enable = true;
       drivers = with pkgs; [ brgenml1cupswrapper ];
     };
+
     pipewire = {
       enable = true;
       pulse.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
     };
+
     getty.autologinUser = "dogu";
   };
 
-  systemd.services.dnscrypt-proxy2.serviceConfig = {
-    StateDirectory = "dnscrypt-proxy";
-  };
 
   nix.settings.trusted-users = [ "dogu" ];
 
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "trq";
+    keyMap = "us";
   };
 
   security = {
@@ -129,6 +134,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
   };
 
   environment = {

@@ -25,7 +25,7 @@ let
     configUrl =
       "https://raw.githubusercontent.com/${src.owner}/${src.repo}/main/config.toml";
 
-    cargoSha256 = "sha256-wPV+ZY34OMbBrjmhvwjljbwmcUiPdWNHFU3ac7aVbIQ=";
+    cargoHash = "sha256-wPV+ZY34OMbBrjmhvwjljbwmcUiPdWNHFU3ac7aVbIQ=";
 
     postInstall = ''
       mkdir -p $out/etc/spotify-adblock

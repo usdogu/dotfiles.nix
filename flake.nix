@@ -8,10 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # ragenix = {
-    #   url = "github:yaxitech/ragenix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,7 @@
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = { config, pkgs, system, ... }: {
+      perSystem = { config, pkgs, system, inputs', ... }: {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
@@ -63,7 +63,7 @@
           statix.enable = true;
         };
         devShells.default = pkgs.mkShellNoCC {
-          # packages = [ inputs'.ragenix.packages.ragenix ];
+          packages = [ inputs'.ragenix.packages.ragenix ];
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';

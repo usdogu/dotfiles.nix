@@ -1,7 +1,7 @@
 {
   services.xserver = {
     enable = true;
-    layout = "tr";
+    xkb.layout = "tr";
     displayManager.startx.enable = true;
   };
 }

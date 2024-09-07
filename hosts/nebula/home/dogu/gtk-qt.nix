@@ -18,8 +18,8 @@
   };
   qt = {
     enable = true;
-    platformTheme = "gtk";
-    style.name = "gtk2";
+    platformTheme.name = "gtk3";
+    style.name = "gtk3";
   };
 
   home.pointerCursor = {

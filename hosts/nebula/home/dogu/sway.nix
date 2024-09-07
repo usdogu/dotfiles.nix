@@ -6,7 +6,12 @@
       terminal = "alacritty";
       menu = "bemenu-run";
       modifier = "Mod4";
-      input = { "*" = { xkb_layout = "tr"; }; };
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "us,tr";
+          xkb_numlock = "enabled";
+        };
+      };
       fonts = { names = [ "Iosevka Nerd Font" ]; };
       window = {
         border = 0;
@@ -68,6 +73,7 @@
           "${modifier}+Print" =
             "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
           "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t bemenu";
+          "${modifier}+Shift+t" = "input type:keyboard xkb_switch_layout next";
         };
     };
     extraSessionCommands = ''
@@ -92,15 +98,6 @@
     '';
   };
 
-  programs.swaylock = {
-    enable = true;
-    package = pkgs.swaylock-effects;
-    settings = {
-      clock = true;
-      indicator = true;
-      font = "Iosevka Nerd Font *";
-    };
-  };
-
+  programs.swaylock.enable = true;
   home.packages = with pkgs; [ bemenu ];
 }

@@ -5,6 +5,7 @@ let
     inputs.nix-monitored.nixosModules.default
     nix-nixpkgs
     ssh
+    tailscale
   ];
 
   commonHome = [{
@@ -33,7 +34,7 @@ in
       hostName = "nebula";
       modules = commonHome ++ [
         inputs.home-manager.nixosModule
-        # inputs.ragenix.nixosModules.age
+        inputs.ragenix.nixosModules.age
         inputs.grub2-themes.nixosModules.default
         inputs.self.nixosModules.xorg
       ];
