@@ -17,6 +17,7 @@
         enable = true;
         device = "/dev/sdb";
         useOSProber = true;
+        default = "2";
       };
 
       grub2-theme = {
