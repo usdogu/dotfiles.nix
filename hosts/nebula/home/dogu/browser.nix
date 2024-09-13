@@ -64,12 +64,9 @@
         # Show whole URL in address bar
         "browser.urlbar.trimURLs" = false;
         # Disable some not so useful functionality.
-        "browser.disableResetPrompt" =
-          true; # "Looks like you haven't started Firefox in a while."
-        "browser.onboarding.enabled" =
-          false; # "New to Firefox? Let's get started!" tour
-        "browser.aboutConfig.showWarning" =
-          false; # Warning when opening about:config
+        "browser.disableResetPrompt" = true; # "Looks like you haven't started Firefox in a while."
+        "browser.onboarding.enabled" = false; # "New to Firefox? Let's get started!" tour
+        "browser.aboutConfig.showWarning" = false; # Warning when opening about:config
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "extensions.pocket.enabled" = false;
         "extensions.shield-recipe-client.enabled" = false;
@@ -82,15 +79,12 @@
         # https://github.com/tlswg/tls13-spec/issues/1001
         "security.tls.enable_0rtt_data" = false;
         # Use Mozilla geolocation service instead of Google if given permission
-        "geo.provider.network.url" =
-          "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
         "geo.provider.use_gpsd" = false;
         # https://support.mozilla.org/en-US/kb/extension-recommendations
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" =
-          false;
-        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" =
-          false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+        "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.htmlaboutaddons.discover.enabled" = false;
         "extensions.getAddons.showPane" = false; # uses Google Analytics
@@ -152,8 +146,7 @@
         # Disable crash reports
         "breakpad.reportURL" = "";
         "browser.tabs.crashReporting.sendReport" = false;
-        "browser.crashReports.unsubmittedCheck.autoSubmit2" =
-          false; # don't submit backlogged reports
+        "browser.crashReports.unsubmittedCheck.autoSubmit2" = false; # don't submit backlogged reports
 
         # Disable Form autofill
         # https://wiki.mozilla.org/Firefox/Features/Form_Autofill
@@ -169,4 +162,3 @@
     };
   };
 }
-

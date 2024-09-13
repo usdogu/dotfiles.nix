@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   home.file = {
     ".gnupg/gpg-agent.conf".text = ''
       enable-ssh-support

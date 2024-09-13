@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -12,14 +18,18 @@
           xkb_numlock = "enabled";
         };
       };
-      fonts = { names = [ "Iosevka Nerd Font" ]; };
+      fonts = {
+        names = [ "Iosevka Nerd Font" ];
+      };
       window = {
         border = 0;
         titlebar = false;
         hideEdgeBorders = "both";
         commands = [
           {
-            criteria = { shell = ".*"; };
+            criteria = {
+              shell = ".*";
+            };
             command = "inhibit_idle fullscreen";
           }
           {
@@ -53,11 +63,12 @@
         ];
       };
 
-      startup = [{
-        command =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        always = true;
-      }];
+      startup = [
+        {
+          command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          always = true;
+        }
+      ];
 
       keybindings =
         let
@@ -68,10 +79,8 @@
           "${modifier}+Shift+c" = "kill";
           "${modifier}+Shift+r" = "reload";
           "${modifier}+Shift+Return" = "exec ${menu}";
-          "Print" =
-            "exec ${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
-          "${modifier}+Print" =
-            "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+          "Print" = "exec ${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+          "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
           "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t bemenu";
           "${modifier}+Shift+t" = "input type:keyboard xkb_switch_layout next";
         };

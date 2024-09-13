@@ -1,4 +1,7 @@
 _: {
+  programs.fish.shellAliases = {
+    s = "doas";
+  };
   programs.alacritty = {
     enable = true;
     settings = {

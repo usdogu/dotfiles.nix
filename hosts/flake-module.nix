@@ -8,23 +8,36 @@ let
     tailscale
   ];
 
-  commonHome = [{
-    home-manager = {
-      useGlobalPkgs = true;
-      extraSpecialArgs = { inherit inputs; };
-      users.dogu = import ../home/dogu;
-    };
-  }];
-  nixosSystemWithDefaults = args:
-    (inputs.nixpkgs.lib.nixosSystem ((builtins.removeAttrs args [ "hostName" ])
+  commonHome = [
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+        users.dogu = import ../home/dogu;
+      };
+    }
+  ];
+  nixosSystemWithDefaults =
+    args:
+    (inputs.nixpkgs.lib.nixosSystem (
+      (builtins.removeAttrs args [ "hostName" ])
       // {
-      specialArgs = { inherit inputs; } // args.specialArgs or { };
-      modules = [
+        specialArgs = {
+          inherit inputs;
+        } // args.specialArgs or { };
+        modules = [
 
-        ./${args.hostName}
-        { networking = { inherit (args) hostName; }; }
-      ] ++ commonProfiles ++ (args.modules or [ ]);
-    }));
+          ./${args.hostName}
+          {
+            networking = {
+              inherit (args) hostName;
+            };
+          }
+        ] ++ commonProfiles ++ (args.modules or [ ]);
+      }
+    ));
 
 in
 {
@@ -43,7 +56,9 @@ in
 
   flake.darwinConfigurations = {
     dou-mek = inputs.darwin.lib.darwinSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+      };
       system = "aarch64-darwin";
       modules = commonHome ++ [
         inputs.home-manager.darwinModules.home-manager

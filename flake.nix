@@ -1,6 +1,5 @@
 {
-  description =
-    "I've nixed any chance I've ever had at human interaction by building this config.";
+  description = "I've nixed any chance I've ever had at human interaction by building this config.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -39,9 +38,13 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
       imports = [
         ./profiles/flake-module.nix
         ./packages/flake-module.nix
@@ -50,29 +53,37 @@
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = { config, pkgs, system, inputs', ... }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+      perSystem =
+        {
+          config,
+          pkgs,
+          system,
+          inputs',
+          ...
+        }:
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
 
-        pre-commit.settings.hooks = {
-          nixpkgs-fmt.enable = true;
-          nil.enable = true;
-          deadnix.enable = true;
-          statix.enable = true;
+          pre-commit.settings.hooks = {
+            nixfmt-rfc-style.enable = true;
+            nil.enable = true;
+            deadnix.enable = true;
+            statix.enable = true;
+          };
+          devShells.default = pkgs.mkShellNoCC {
+            packages = [ inputs'.ragenix.packages.ragenix ];
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
+          };
+          packages.iso = inputs.nixos-generators.nixosGenerate {
+            system = "x86_64-linux";
+            modules = [ ./hosts/iso/default.nix ];
+            format = "iso";
+          };
         };
-        devShells.default = pkgs.mkShellNoCC {
-          packages = [ inputs'.ragenix.packages.ragenix ];
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
-        };
-        packages.iso = inputs.nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          modules = [ ./hosts/iso/default.nix ];
-          format = "iso";
-        };
-      };
     };
 }

@@ -7,7 +7,9 @@
     userEmail = "uspro@disroot.org";
     delta = {
       enable = false; # 0.17 fails to compile, good chance to try difftastic
-      options = { side-by-side = true; };
+      options = {
+        side-by-side = true;
+      };
     };
     difftastic = {
       enable = true;

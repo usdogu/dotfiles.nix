@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   programs.helix = {
     enable = true;
@@ -24,7 +29,9 @@
           "0" = "goto_line_start";
           "$" = "goto_line_end";
           G = "goto_last_line";
-          g = { G = "goto_last_line"; };
+          g = {
+            G = "goto_last_line";
+          };
         };
         select = {
           "$" = "goto_line_end";
@@ -34,8 +41,8 @@
     };
     languages = {
       language-server = {
-        typescript-language-server = with pkgs.nodePackages; {
-          command = lib.getExe typescript-language-server;
+        vtsls = {
+          command = lib.getExe inputs.self.packages.${pkgs.system}.vtsls;
           args = [ "--stdio" ];
         };
         nixd.command = lib.getExe pkgs.nixd;
@@ -43,8 +50,16 @@
       language = [
         {
           name = "nix";
-          formatter.command = lib.getExe pkgs.nixpkgs-fmt;
+          auto-format = true;
+          formatter = {
+            command = lib.getExe pkgs.nixfmt-rfc-style;
+            args = [ "-" ];
+          };
           language-servers = [ "nixd" ];
+        }
+        {
+          name = "typescript";
+          language-servers = [ "vtsls" ];
         }
       ];
     };

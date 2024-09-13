@@ -13,12 +13,13 @@
         cat = "bat";
         rm = "rip";
         gc = "git clone";
-        nix-cleanup =
-          "home-manager expire-generations '-1 day'; s nix-collect-garbage -d; nix-collect-garbage -d; s nix-store --optimize";
+        nix-cleanup = "home-manager expire-generations '-1 day'; s nix-collect-garbage -d; nix-collect-garbage -d; s nix-store --optimize";
         man = "batman";
         devmux = "zellij --layout dev";
       };
-      shellAbbrs = { sv = "sudo -e"; };
+      shellAbbrs = {
+        sv = "sudo -e";
+      };
       shellInit = ''
         set -gx COLORTERM truecolor
         set -U fish_greeting
@@ -60,7 +61,9 @@
       enable = true;
       settings = {
         add_newline = false;
-        character = { error_symbol = "[✗](bold red) "; };
+        character = {
+          error_symbol = "[✗](bold red) ";
+        };
         package.disabled = true;
         git_branch = {
           symbol = "🌱 ";
@@ -133,8 +136,12 @@
     };
   };
 
-  home.sessionPath =
-    [ "$HOME/.cargo/bin" "$HOME/bin" "$HOME/bin/zig" "$HOME/.local/bin" ];
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+    "$HOME/bin"
+    "$HOME/bin/zig"
+    "$HOME/.local/bin"
+  ];
 
   xdg.configFile."zellij/layouts/dev.kdl".text = ''
     layout {

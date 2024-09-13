@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./home ];
+  imports = [
+    ./hardware-configuration.nix
+    ./home
+  ];
 
   boot = {
     tmp.cleanOnBoot = true;
@@ -33,14 +36,16 @@
     timeZone = "Europe/Istanbul";
   };
 
-  fonts.packages = with pkgs;
-    [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
 
   networking = {
     hostName = "nebula";
     networkmanager.enable = true;
     networkmanager.dns = "none";
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
   };
   systemd.services = {
     NetworkManager-wait-online.enable = false;
@@ -50,15 +55,17 @@
     dnscrypt-proxy2 = {
       enable = true;
       settings = {
-        bootstrap_resolvers = [ "1.1.1.1:53" "8.8.8.8:53" ];
+        bootstrap_resolvers = [
+          "1.1.1.1:53"
+          "8.8.8.8:53"
+        ];
         server_names = [ "cloudflare" ];
         sources.public-resolvers = {
           urls = [
             "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
             "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
           ];
-          minisign_key =
-            "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+          minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
           cache_file = "public-resolvers.md";
 
         };
@@ -79,7 +86,6 @@
 
     getty.autologinUser = "dogu";
   };
-
 
   nix.settings.trusted-users = [ "dogu" ];
 
@@ -109,18 +115,26 @@
   security = {
     doas = {
       enable = true;
-      extraRules = [{
-        users = [ "dogu" ];
-        noPass = true;
-        keepEnv = true;
-      }];
+      extraRules = [
+        {
+          users = [ "dogu" ];
+          noPass = true;
+          keepEnv = true;
+        }
+      ];
     };
     sudo.wheelNeedsPassword = false;
   };
 
   users.users.dogu = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "audio"
+      "libvirtd"
+    ];
     shell = pkgs.fish;
   };
   programs = {
@@ -143,7 +157,12 @@
     loginShellInit = ''
       [[ "$(tty)" == /dev/tty1 ]] && sway
     '';
-    systemPackages = with pkgs; [ helix git qt5.qtwayland virt-manager ];
+    systemPackages = with pkgs; [
+      helix
+      git
+      qt5.qtwayland
+      virt-manager
+    ];
   };
   system.stateVersion = "24.05";
 }

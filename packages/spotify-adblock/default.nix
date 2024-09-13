@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, spotify # unfree
-, wget
-, wrapSpotify ? true # set to false if you need only lib/libspotifyadblock.so
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  spotify, # unfree
+  wget,
+  wrapSpotify ? true, # set to false if you need only lib/libspotifyadblock.so
 }:
 
 let
@@ -22,8 +23,7 @@ let
       sha256 = "sha256-UzpHAHpQx2MlmBNKm2turjeVmgp5zXKWm3nZbEo0mYE=";
     };
 
-    configUrl =
-      "https://raw.githubusercontent.com/${src.owner}/${src.repo}/main/config.toml";
+    configUrl = "https://raw.githubusercontent.com/${src.owner}/${src.repo}/main/config.toml";
 
     cargoHash = "sha256-wPV+ZY34OMbBrjmhvwjljbwmcUiPdWNHFU3ac7aVbIQ=";
 
@@ -47,7 +47,11 @@ else
 
   stdenv.mkDerivation {
     inherit (spotify-adblock) pname version;
-    buildInputs = [ spotify-adblock spotify wget ];
+    buildInputs = [
+      spotify-adblock
+      spotify
+      wget
+    ];
     buildCommand = ''
       mkdir -p $out/bin
       cp ${spotify}/bin/spotify $out/bin/spotify-adblock
