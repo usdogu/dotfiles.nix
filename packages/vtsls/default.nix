@@ -25,4 +25,5 @@ pkgs.buildNpmPackage {
 
     runHook postInstall
   '';
+  meta.mainProgram = "vtsls";
 }
