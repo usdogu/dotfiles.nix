@@ -7,5 +7,6 @@
       enable = true;
       extraPackages = [ pkgs.bat-extras.batman ];
     };
+    command-not-found.enable = false;
   };
 }

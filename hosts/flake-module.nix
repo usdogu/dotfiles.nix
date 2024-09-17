@@ -6,6 +6,9 @@ let
     nix-nixpkgs
     ssh
     tailscale
+    {
+      programs.command-not-found.enable = false;
+    }
   ];
 
   commonHome = [
