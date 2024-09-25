@@ -6,9 +6,10 @@
   services.tailscale = {
     enable = true;
     authKeyFile = config.age.secrets.tailscaleAuthKey.path;
+    useRoutingFeatures = "both";
+    extraSetFlags = [ "--advertise-exit-node" ];
     extraUpFlags = [
       "--ssh"
-      "--advertise-exit-node"
     ];
   };
 }
