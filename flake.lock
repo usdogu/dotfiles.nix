@@ -351,7 +351,8 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",
-        "ragenix": "ragenix"
+        "ragenix": "ragenix",
+        "wakatime-lsp": "wakatime-lsp"
       }
     },
     "rust-overlay": {
@@ -402,6 +403,34 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wakatime-lsp": {
+      "inputs": {
+        "gitignore": [
+          "pre-commit-hooks",
+          "gitignore"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "ragenix",
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1723800963,
+        "narHash": "sha256-bvkig0TLiorNp7Lxer8ZRJQGB3C8lVJ96H2+SwYIT6s=",
+        "owner": "mrnossiom",
+        "repo": "wakatime-lsp",
+        "rev": "552fbbcc5fc0f8cf3122daad63bb4eb1497bbc76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrnossiom",
+        "repo": "wakatime-lsp",
         "type": "github"
       }
     }

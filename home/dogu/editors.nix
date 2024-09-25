@@ -46,6 +46,7 @@
           args = [ "--stdio" ];
         };
         nixd.command = lib.getExe pkgs.nixd;
+        wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
       };
       language = [
         {
@@ -55,11 +56,17 @@
             command = lib.getExe pkgs.nixfmt-rfc-style;
             args = [ "-" ];
           };
-          language-servers = [ "nixd" ];
+          language-servers = [
+            "nixd"
+            "wakatime"
+          ];
         }
         {
           name = "typescript";
-          language-servers = [ "vtsls" ];
+          language-servers = [
+            "vtsls"
+            "wakatime"
+          ];
         }
       ];
     };
