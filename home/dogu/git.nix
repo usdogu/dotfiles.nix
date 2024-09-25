@@ -26,6 +26,16 @@
         "https://github.com/".insteadOf = "gh:";
         "https://codeberg.org/".insteadOf = "cerg:";
       };
+      merge.conflictStyle = "zdiff3";
+      push.autoSetupRemote = true;
+      fetch = {
+        prune = true;
+        pruneTags = true;
+      };
+      rerere = {
+        enable = true;
+        autoUpdate = true;
+      };
     };
   };
 
