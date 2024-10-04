@@ -10,4 +10,5 @@ let
 in
 {
   "tailscaleAuthKey.age".publicKeys = allSystems ++ allUsers;
+  "netdataClaimToken.age".publicKeys = allSystems ++ allUsers;
 }

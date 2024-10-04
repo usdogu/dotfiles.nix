@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 
 let
-  commonProfiles = with inputs.self.nixosModules; [
+  commonProfiles = with config.flake.nixosModules; [
     inputs.nix-monitored.nixosModules.default
     nix-nixpkgs
     ssh
@@ -52,7 +52,8 @@ in
         inputs.home-manager.nixosModule
         inputs.ragenix.nixosModules.age
         inputs.grub2-themes.nixosModules.default
-        inputs.self.nixosModules.xorg
+        config.flake.nixosModules.xorg
+        config.flake.nixosModules.netdata
       ];
     };
   };
@@ -65,7 +66,7 @@ in
       system = "aarch64-darwin";
       modules = commonHome ++ [
         inputs.home-manager.darwinModules.home-manager
-        inputs.self.nixosModules.nix-nixpkgs
+        config.flake.nixosModules.nix-nixpkgs
         inputs.nix-monitored.darwinModules.default
         ./m1
       ];
