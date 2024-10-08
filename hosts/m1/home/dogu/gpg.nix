@@ -1,4 +1,5 @@
 { pkgs, lib, ... }:
+# TODO: https://github.com/nix-community/home-manager/commit/ef506124579ff6280a43a9596bb2a5049872bf8e
 {
   home.file = {
     ".gnupg/gpg-agent.conf".text = ''

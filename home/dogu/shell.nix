@@ -4,6 +4,7 @@
   programs = {
     fish = {
       enable = true;
+      preferAbbrs = true;
       shellAliases = {
         cls = "clear";
         ls = "lsd";
