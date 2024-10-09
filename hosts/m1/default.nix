@@ -2,6 +2,7 @@
 
 {
   imports = [ ./home ];
+  system.stateVersion = 5;
   networking = {
     hostName = "dou-mek";
     computerName = "Dou's Air";

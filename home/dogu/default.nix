@@ -10,5 +10,6 @@
     ./editors.nix
     ./git.nix
     ./shell.nix
+    ./services.nix
   ];
 }
