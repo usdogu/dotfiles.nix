@@ -14,11 +14,10 @@
 
   nix = {
     monitored.enable = true;
-    registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = lib.singleton config.nix.settings.nix-path;
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    nixPath = lib.mapAttrsToList (k: v: "${k}=${v.to.path}") config.nix.registry;
     channel.enable = true;
     settings = {
-      nix-path = "nixpkgs=flake:nixpkgs";
       experimental-features = [
         "nix-command"
         "flakes"
