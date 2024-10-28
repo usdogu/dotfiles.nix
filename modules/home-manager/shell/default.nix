@@ -27,6 +27,7 @@ in
           gc = "git clone";
           nix-cleanup = "home-manager expire-generations '-1 day'; s nix-collect-garbage -d; nix-collect-garbage -d; s nix-store --optimize";
           man = "batman";
+          s = if pkgs.stdenv.isLinux then "doas" else "sudo";
         };
         shellAbbrs = {
           sv = "sudo -e";

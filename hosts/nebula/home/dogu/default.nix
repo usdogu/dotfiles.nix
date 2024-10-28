@@ -7,12 +7,12 @@
     ./packages.nix
     ./programs.nix
     ./browser.nix
-    ./sway.nix
-    ./shell.nix
     ./services.nix
   ];
 
   dogu = {
     theming.enable = true;
+    alacritty.enable = true;
+    sway.enable = true;
   };
 }
