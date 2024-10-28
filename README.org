@@ -22,4 +22,4 @@ machines.
 ** Thanks
 [[https://github.com/Kranzes][@Kranzes]] - I basically copy pasted and edited his [[https://github.com/Kranzes/nix-config][config]]
 
-[[https://github.com/yomaq][@yomaq]] - For the module system idea
+[[https://github.com/yomaq][@yomaq]] - For the module system [[https://github.com/yomaq/nix-config][idea]]
