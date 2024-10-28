@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ./hardware-configuration.nix
+    (inputs.self + /users/dogu)
     ./home
   ];
+  networking.hostName = "nebula";
 
   boot = {
     tmp.cleanOnBoot = true;
@@ -16,19 +23,6 @@
     '';
     initrd.kernelModules = [ "8821cu" ];
     extraModulePackages = [ config.boot.kernelPackages.rtl8821cu ];
-    loader = {
-      grub = {
-        enable = true;
-        device = "/dev/sdb";
-        useOSProber = true;
-        default = "2";
-      };
-
-      grub2-theme = {
-        enable = true;
-        theme = "vimix";
-      };
-    };
     supportedFilesystems = [ "ntfs" ];
   };
 
@@ -39,40 +33,7 @@
 
   fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
 
-  networking = {
-    hostName = "nebula";
-    networkmanager.enable = true;
-    networkmanager.dns = "none";
-    nameservers = [
-      "127.0.0.1"
-      "::1"
-    ];
-  };
-  systemd.services = {
-    NetworkManager-wait-online.enable = false;
-    dnscrypt-proxy2.serviceConfig.StateDirectory = "dnscrypt-proxy";
-  };
   services = {
-    dnscrypt-proxy2 = {
-      enable = true;
-      settings = {
-        bootstrap_resolvers = [
-          "1.1.1.1:53"
-          "8.8.8.8:53"
-        ];
-        server_names = [ "cloudflare" ];
-        sources.public-resolvers = {
-          urls = [
-            "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
-            "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-          ];
-          minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
-          cache_file = "public-resolvers.md";
-
-        };
-      };
-    };
-
     printing = {
       enable = true;
       drivers = with pkgs; [ brgenml1cupswrapper ];
@@ -87,8 +48,6 @@
 
     getty.autologinUser = "dogu";
   };
-
-  nix.settings.trusted-users = [ "dogu" ];
 
   console = {
     font = "Lat2-Terminus16";
@@ -147,22 +106,7 @@
     sudo.wheelNeedsPassword = false;
   };
 
-  users.users.dogu = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "video"
-      "audio"
-      "libvirtd"
-      "podman"
-    ];
-    shell = pkgs.fish;
-  };
-  programs = {
-    fish.enable = true;
-    dconf.enable = true;
-  };
+  programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
   services.fstrim.enable = true;
   # allow swaylock to unlock session
@@ -185,6 +129,21 @@
       qt5.qtwayland
       virt-manager
     ];
+  };
+
+  dogu = {
+    netdata.enable = true;
+    nixSettings.enable = true;
+    tailscale.enable = true;
+    network.enable = true;
+    agenix.enable = true;
+    grub = {
+      enable = true;
+      device = "/dev/sdb";
+      useOSProber = true;
+      default = "2";
+      theme = "vimix";
+    };
   };
   system.stateVersion = "24.05";
 }

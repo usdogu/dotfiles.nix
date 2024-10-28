@@ -93,5 +93,30 @@
             format = "iso";
           };
         };
+
+      flake = {
+        nixosModules.dogu = import ./modules/hosts/nixos.nix;
+        darwinModules.dogu = import ./modules/hosts/darwin.nix;
+        homeManagerModules.dogu = import ./modules/home-manager;
+
+        nixosConfigurations = {
+          nebula = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [ ./hosts/nebula ];
+          };
+        };
+        darwinConfigurations = {
+          dou-mek = inputs.darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [ ./hosts/m1 ];
+          };
+        };
+      };
     };
 }
