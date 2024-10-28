@@ -54,9 +54,7 @@
         "aarch64-darwin"
       ];
       imports = [
-        ./profiles/flake-module.nix
         ./packages/flake-module.nix
-        ./hosts/flake-module.nix
         ./dev/flake-module.nix
         inputs.pre-commit-hooks.flakeModule
       ];

@@ -8,7 +8,6 @@
   imports = [
     inputs.home-manager.darwinModules.default
     inputs.self.darwinModules.dogu
-    ./home
   ];
   system.stateVersion = 5;
   networking = {
