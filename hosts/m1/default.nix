@@ -48,6 +48,7 @@
         "swiftformat-for-xcode"
         "alacritty"
         "hiddenbar"
+        "the-unarchiver"
       ];
       masApps = {
         Xcode = 497799835;
