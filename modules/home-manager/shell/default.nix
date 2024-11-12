@@ -136,7 +136,7 @@ in
           mouse_mode = false;
           copy_on_select = false;
           pane_frames = false;
-          default_layout = "compact";
+          default_mode = "locked";
         };
       };
 
@@ -150,6 +150,15 @@ in
         nix-direnv.enable = true;
       };
     };
+
+    xdg.configFile."zellij/layouts/default.kdl".text = ''
+      layout {
+        pane
+        pane size=1 borderless=true {
+          plugin location="status-bar"
+        }
+      }
+    '';
 
     home.sessionPath = [
       "$HOME/.cargo/bin"
