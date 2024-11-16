@@ -49,5 +49,6 @@ in
     git.enable = true;
     shell.enable = true;
     editors.enable = true;
+    ssh.enable = true;
   };
 }

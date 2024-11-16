@@ -21,10 +21,10 @@ in
         enable = true;
         background = "dark";
       };
-      signing = {
-        key = "A8B0AEA8D751EC27";
-        signByDefault = true;
-      };
+      # signing = {
+      #   key = "A8B0AEA8D751EC27";
+      #   signByDefault = true;
+      # };
       extraConfig = {
         credential.helper = "store";
         init.defaultBranch = "main";
@@ -42,6 +42,10 @@ in
           enable = true;
           autoUpdate = true;
         };
+        commit.gpgSign = true;
+        tag.gpgSign = true;
+        gpg.format = "ssh";
+        user.signingkey = "~/.ssh/id_ed25519.pub";
       };
     };
 
