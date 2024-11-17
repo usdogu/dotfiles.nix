@@ -3,5 +3,5 @@
   ...
 }:
 {
-  imports = [ inputs.ragenix.nixosModules.age ];
+  imports = [ inputs.agenix.nixosModules.age ];
 }

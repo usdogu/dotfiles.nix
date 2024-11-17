@@ -21,10 +21,6 @@ in
         enable = true;
         background = "dark";
       };
-      # signing = {
-      #   key = "A8B0AEA8D751EC27";
-      #   signByDefault = true;
-      # };
       extraConfig = {
         credential.helper = "store";
         init.defaultBranch = "main";

@@ -132,7 +132,6 @@
   };
 
   dogu = {
-    netdata.enable = true;
     nixSettings.enable = true;
     tailscale.enable = true;
     network.enable = true;

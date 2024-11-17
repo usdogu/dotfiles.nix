@@ -3,5 +3,5 @@
   ...
 }:
 {
-  imports = [ inputs.ragenix.darwinModules.age ];
+  imports = [ inputs.agenix.darwinModules.age ];
 }
