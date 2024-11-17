@@ -10,5 +10,5 @@ let
   allSystems = builtins.attrValues systems;
 in
 {
-  "tailscaleAuthKey.age".publicKeys = allSystems ++ allUsers;
+  "tailscale-key.age".publicKeys = allSystems ++ allUsers;
 }
