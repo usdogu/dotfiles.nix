@@ -4,11 +4,12 @@ let
     dou-mek = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMQ0TJzEK58B5Kc2DUmZqePp9vSFiEwNsSJx8I6S5Fpi";
   };
   users = {
-    dogu = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5IDmLOymXdnfTTPcYw8vrU3AeqCJeWGlP/mRmXNoA0";
+    dogu = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBYxJtGGaHmbVHyUP1iTvICusscTmD4YZHI+NeEliTeF";
   };
   allUsers = builtins.attrValues users;
   allSystems = builtins.attrValues systems;
 in
 {
   "tailscale-key.age".publicKeys = allSystems ++ allUsers;
+  "wakatime-config.age".publicKeys = allSystems ++ allUsers;
 }

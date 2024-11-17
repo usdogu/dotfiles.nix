@@ -1,7 +1,25 @@
-{ inputs, pkgs, ... }:
 {
-  imports = [ inputs.self.homeManagerModules.dogu ];
-  home.stateVersion = "24.05";
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+{
+  imports = [
+    inputs.self.homeManagerModules.dogu
+    inputs.agenix.homeManagerModules.age
+  ];
+
+  home = {
+    stateVersion = "24.05";
+    sessionVariables.WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
+  };
+
+  age.secrets.wakatime-config = {
+    file = inputs.self + /secrets/wakatime-config.age;
+    path = "${config.xdg.configHome}/wakatime/.wakatime.cfg";
+  };
+
   systemd.user.startServices = "sd-switch";
 
   home.packages = with pkgs; [
