@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-  home.stateVersion = "24.05";
   imports = [ inputs.self.homeManagerModules.dogu ];
 
   home.packages = with pkgs; [

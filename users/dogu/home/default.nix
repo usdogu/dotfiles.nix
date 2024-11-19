@@ -11,7 +11,7 @@
   ];
 
   home = {
-    stateVersion = "24.05";
+    stateVersion = "25.05";
     sessionVariables.WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
   };
 

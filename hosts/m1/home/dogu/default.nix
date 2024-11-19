@@ -1,5 +1,5 @@
 {
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   programs.fish.interactiveShellInit = ''
     eval (/opt/homebrew/bin/brew shellenv)
