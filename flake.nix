@@ -40,8 +40,8 @@
       url = "github:ners/nix-monitored";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wakatime-lsp = {
-      url = "github:mrnossiom/wakatime-lsp";
+    wakatime-ls = {
+      url = "github:mrnossiom/wakatime-ls";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         gitignore.follows = "pre-commit-hooks/gitignore";

@@ -55,7 +55,7 @@ in
             args = [ "--stdio" ];
           };
           nixd.command = lib.getExe pkgs.nixd;
-          wakatime.command = lib.getExe inputs.wakatime-lsp.packages.${pkgs.system}.default;
+          wakatime.command = lib.getExe inputs.wakatime-ls.packages.${pkgs.system}.default;
         };
         language = [
           {
