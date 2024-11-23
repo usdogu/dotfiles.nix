@@ -62,6 +62,8 @@
         inputs.pre-commit-hooks.flakeModule
       ];
 
+      debug = true;
+
       perSystem =
         {
           config,

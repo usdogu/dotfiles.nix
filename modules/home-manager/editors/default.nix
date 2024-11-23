@@ -54,7 +54,22 @@ in
             command = lib.getExe inputs.self.packages.${pkgs.system}.vtsls;
             args = [ "--stdio" ];
           };
-          nixd.command = lib.getExe pkgs.nixd;
+          nixd = {
+            command = lib.getExe pkgs.nixd;
+            config.nixd =
+              let
+                flake = ''(builtins.getFlake "${inputs.self}")'';
+              in
+              {
+                nixpkgs.expr = "import ${flake}.inputs.nixpkgs { }";
+                options = rec {
+                  flake-parts.expr = "${flake}.debug.options";
+                  nixos.expr = "${flake}.nixosConfigurations.nebula.options";
+                  nix-darwin.expr = "${flake}.darwinConfigurations.dou-mek.options";
+                  home-manager.expr = "${nixos.expr}.home-manager.users.type.getSubOptions [ ]";
+                };
+              };
+          };
           wakatime.command = lib.getExe inputs.wakatime-ls.packages.${pkgs.system}.default;
         };
         language = [

@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     (inputs.self + /users/dogu)
+    inputs.self.nixosModules.dogu
     ./home
   ];
   networking.hostName = "nebula";
