@@ -32,7 +32,7 @@
     timeZone = "Europe/Istanbul";
   };
 
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+  fonts.packages = [ pkgs.nerd-fonts.iosevka ];
 
   services = {
     printing = {

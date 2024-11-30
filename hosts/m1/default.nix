@@ -21,7 +21,7 @@
     shell = pkgs.fish;
   };
   programs.fish.enable = true;
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "Iosevka" ]; }) ];
+  fonts.packages = [ pkgs.nerd-fonts.iosevka ];
   dogu = {
     nixSettings.enable = true;
     tailscale.enable = true;
