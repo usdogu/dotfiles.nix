@@ -51,7 +51,7 @@ in
       languages = {
         language-server = {
           vtsls = {
-            command = lib.getExe inputs.self.packages.${pkgs.system}.vtsls;
+            command = lib.getExe pkgs.vtsls;
             args = [ "--stdio" ];
           };
           nixd = {

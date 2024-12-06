@@ -37,8 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-monitored = {
-      # url = "github:ners/nix-monitored"; # https://github.com/ners/nix-monitored/issues/7
-      url = "github:ners/nix-monitored/776e497a13b8b403065d59c45a3fdc07b76a0db1";
+      url = "github:ners/nix-monitored";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wakatime-ls = {
