@@ -33,7 +33,6 @@
     jaq # alternative for jq
     home-manager
     fzf
-    gh
     bun
   ];
 
@@ -43,6 +42,10 @@
       extraPackages = [ pkgs.bat-extras.batman ];
     };
     command-not-found.enable = false;
+    gh = {
+      enable = true;
+      extensions = [ pkgs.gh-copilot ];
+    };
   };
 
   dogu = {
