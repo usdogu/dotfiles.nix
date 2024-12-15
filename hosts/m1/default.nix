@@ -43,7 +43,6 @@
         "proxyman"
         "raycast"
         "rider"
-        "shottr"
         "telegram"
         "swiftformat-for-xcode"
         "alacritty"
