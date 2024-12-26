@@ -31,7 +31,7 @@ let
         && file != "default.nix"
         && file != "darwin.nix"
         # how to exclude a path
-        # && ! lib.hasPrefix "exclude/path/" file 
+        # && ! lib.hasPrefix "exclude/path/" file
         # how to exclude a group of files
         && !lib.hasSuffix "nixos.nix" file
       ) (files dir)

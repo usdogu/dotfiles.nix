@@ -88,7 +88,8 @@ in
             "${modifier}+Shift+r" = "reload";
             "${modifier}+Shift+Return" = "exec ${menu}";
             "Print" = "exec ${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
-            "${modifier}+Print" = "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
+            "${modifier}+Print" =
+              "exec ${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t 'image/png'";
             "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t bemenu";
             "${modifier}+Shift+t" = "input type:keyboard xkb_switch_layout next";
           };
