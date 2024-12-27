@@ -48,6 +48,7 @@
         "alacritty"
         "hiddenbar"
         "the-unarchiver"
+        "ayugram"
       ];
       masApps = {
         Xcode = 497799835;
