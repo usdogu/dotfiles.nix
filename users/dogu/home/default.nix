@@ -8,7 +8,6 @@
   imports = [
     inputs.self.homeManagerModules.dogu
     inputs.agenix.homeManagerModules.age
-    inputs.mac-app-util.homeManagerModules.default
   ];
 
   home = {

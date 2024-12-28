@@ -47,13 +47,6 @@
         gitignore.follows = "pre-commit-hooks/gitignore";
       };
     };
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "pre-commit-hooks/flake-compat";
-      };
-    };
   };
 
   outputs =
