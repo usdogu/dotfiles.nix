@@ -36,8 +36,6 @@ in
           set -gx COLORTERM truecolor
           set -U fish_greeting
           source ~/.config/fish/functions/ls_on_cd.fish
-        '';
-        interactiveShellInit = ''
           set ZELLIJ_AUTO_EXIT true
         '';
         functions = {
