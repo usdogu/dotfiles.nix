@@ -35,7 +35,6 @@
         "alt-tab"
         "appcleaner"
         "iina"
-        "iterm2"
         "obs"
         "orbstack"
         "orion"
