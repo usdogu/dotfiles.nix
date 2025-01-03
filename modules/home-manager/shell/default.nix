@@ -37,6 +37,9 @@ in
           set -U fish_greeting
           source ~/.config/fish/functions/ls_on_cd.fish
         '';
+        interactiveShellInit = ''
+          set ZELLIJ_AUTO_EXIT true
+        '';
         functions = {
           gp = {
             description = "git {add,commit,push}";
@@ -131,6 +134,7 @@ in
 
       zellij = {
         enable = true;
+        enableFishIntegration = true;
         settings = {
           on_force_close = "quit";
           mouse_mode = false;

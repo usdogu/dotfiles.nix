@@ -18,7 +18,6 @@
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs"; # who tf cares about stability?
     };
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
