@@ -24,7 +24,7 @@ in
             goto-reference-include-declaration = false;
             display-inlay-hints = true;
           };
-
+          auto-format = true;
           cursor-shape = {
             insert = "bar";
             normal = "block";
@@ -71,11 +71,14 @@ in
               };
           };
           wakatime.command = lib.getExe inputs.wakatime-ls.packages.${pkgs.system}.default;
+          biome = {
+            command = lib.getExe pkgs.biome;
+            args = [ "lsp-proxy" ];
+          };
         };
         language = [
           {
             name = "nix";
-            auto-format = true;
             formatter = {
               command = lib.getExe pkgs.nixfmt-rfc-style;
               args = [ "-" ];
@@ -88,9 +91,50 @@ in
           {
             name = "typescript";
             language-servers = [
-              "vtsls"
+              {
+                name = "vtsls";
+                except-features = [ "format" ];
+              }
+              "biome"
               "wakatime"
             ];
+          }
+          {
+            name = "javascript";
+            language-servers = [
+              {
+                name = "vtsls";
+                except-features = [ "format" ];
+              }
+              "biome"
+              "wakatime"
+            ];
+          }
+          {
+            name = "tsx";
+            language-servers = [
+              {
+                name = "vtsls";
+                except-features = [ "format" ];
+              }
+              "biome"
+              "wakatime"
+            ];
+          }
+          {
+            name = "jsx";
+            language-servers = [
+              {
+                name = "vtsls";
+                except-features = [ "format" ];
+              }
+              "biome"
+              "wakatime"
+            ];
+          }
+          {
+            name = "json";
+            language-servers = [ "biome" ];
           }
         ];
       };

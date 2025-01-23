@@ -48,6 +48,8 @@
         "hiddenbar"
         "the-unarchiver"
         "ayugram"
+        "aldente"
+        "shortcat"
       ];
       masApps = {
         Xcode = 497799835;
