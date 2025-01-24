@@ -39,7 +39,6 @@
         "orbstack"
         "orion"
         "playcover-community"
-        "proxyman"
         "raycast"
         "rider"
         "telegram"
