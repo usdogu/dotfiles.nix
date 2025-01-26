@@ -138,7 +138,7 @@ in
           mouse_mode = false;
           copy_on_select = false;
           pane_frames = false;
-          default_mode = "locked";
+          default_layout = "compact";
         };
       };
 
