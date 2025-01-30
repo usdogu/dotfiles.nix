@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: cachix/install-nix-action@v20
+    - uses: cachix/install-nix-action@v27
       with:
-        nix_path: nixpkgs=channel:nixpkgs-unstable
-    - uses: cachix/cachix-action@v12
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: cachix/cachix-action@v15
       with:
         name: usdogu
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: |
-        nix build --impure github:srid/devour-flake -L --no-link --print-out-paths --override-input flake . | xargs cat | cachix push usdogu
+        nix build --impure github:srid/devour-flake -L --no-link --print-out-paths --override-input flake . | cachix push usdogu
     env:
       NIXPKGS_ALLOW_UNFREE: 1

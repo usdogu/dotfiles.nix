@@ -24,7 +24,6 @@ in
             goto-reference-include-declaration = false;
             display-inlay-hints = true;
           };
-          auto-format = true;
           cursor-shape = {
             insert = "bar";
             normal = "block";
@@ -75,10 +74,15 @@ in
             command = lib.getExe pkgs.biome;
             args = [ "lsp-proxy" ];
           };
+          vscode-json-language-server = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-json-language-server";
+            args = [ "--stdio" ];
+          };
         };
         language = [
           {
             name = "nix";
+            auto-format = true;
             formatter = {
               command = lib.getExe pkgs.nixfmt-rfc-style;
               args = [ "-" ];
@@ -90,6 +94,7 @@ in
           }
           {
             name = "typescript";
+            auto-format = true;
             language-servers = [
               {
                 name = "vtsls";
@@ -101,6 +106,7 @@ in
           }
           {
             name = "javascript";
+            auto-format = true;
             language-servers = [
               {
                 name = "vtsls";
@@ -112,6 +118,7 @@ in
           }
           {
             name = "tsx";
+            auto-format = true;
             language-servers = [
               {
                 name = "vtsls";
@@ -123,6 +130,7 @@ in
           }
           {
             name = "jsx";
+            auto-format = true;
             language-servers = [
               {
                 name = "vtsls";
@@ -134,7 +142,13 @@ in
           }
           {
             name = "json";
-            language-servers = [ "biome" ];
+            language-servers = [
+              {
+                name = "vscode-json-language-server";
+                except-features = [ "format" ];
+              }
+              "biome"
+            ];
           }
         ];
       };
