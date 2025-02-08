@@ -35,7 +35,6 @@
         "alt-tab"
         "appcleaner"
         "iina"
-        "obs"
         "orbstack"
         "orion"
         "playcover-community"
@@ -49,12 +48,14 @@
         "ayugram"
         "aldente"
         "shortcat"
+        "quickrecorder"
       ];
       masApps = {
         Xcode = 497799835;
         Flow = 1423210932;
         PDFGear = 6469021132;
       };
+      taps = [ "lihaoyun6/tap" ];
     };
   };
 

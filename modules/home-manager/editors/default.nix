@@ -69,7 +69,13 @@ in
                 };
               };
           };
-          wakatime.command = lib.getExe inputs.wakatime-ls.packages.${pkgs.system}.default;
+          wakatime.command = lib.getExe (
+            inputs.wakatime-ls.packages.${pkgs.system}.default.override {
+              wakatime = pkgs.wakatime.overrideAttrs (_: {
+                doCheck = false;
+              });
+            }
+          );
           biome = {
             command = lib.getExe pkgs.biome;
             args = [ "lsp-proxy" ];
