@@ -29,7 +29,6 @@ in
           "cgroups"
           "auto-allocate-uids"
         ];
-        auto-allocate-uids = true;
         builders-use-substitutes = true;
         warn-dirty = false;
         trusted-users = [

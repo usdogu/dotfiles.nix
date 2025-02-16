@@ -15,11 +15,16 @@
     computerName = "Dou's Air";
   };
   security.pam.enableSudoTouchIdAuth = true;
-  users.users.dogu = {
-    name = "dogu";
-    home = "/Users/dogu";
-    shell = pkgs.fish;
+  users = {
+    users.dogu = {
+      name = "dogu";
+      home = "/Users/dogu";
+      shell = pkgs.fish;
+      uid = 501;
+    };
+    knownUsers = [ "dogu" ];
   };
+  ids.gids.nixbld = 30000;
   programs.fish.enable = true;
   fonts.packages = [ pkgs.nerd-fonts.iosevka ];
   dogu = {

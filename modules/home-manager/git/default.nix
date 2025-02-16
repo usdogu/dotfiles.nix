@@ -17,6 +17,11 @@ in
       enable = true;
       userName = "Doğu Us";
       userEmail = "uspro@disroot.org";
+      signing = {
+        format = "ssh";
+        signByDefault = true;
+        key = "~/.ssh/id_ed25519.pub";
+      };
       difftastic = {
         enable = true;
         background = "dark";
@@ -26,7 +31,6 @@ in
         init.defaultBranch = "main";
         url = {
           "https://github.com/".insteadOf = "github:";
-          "https://codeberg.org/".insteadOf = "cerg:";
         };
         merge.conflictStyle = "zdiff3";
         push.autoSetupRemote = true;
@@ -38,10 +42,6 @@ in
           enable = true;
           autoUpdate = true;
         };
-        commit.gpgSign = true;
-        tag.gpgSign = true;
-        gpg.format = "ssh";
-        user.signingkey = "~/.ssh/id_ed25519.pub";
       };
     };
 

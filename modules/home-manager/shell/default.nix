@@ -132,7 +132,8 @@ in
 
       zellij = {
         enable = true;
-        enableFishIntegration = true;
+        enableBashIntegration = false;
+        enableZshIntegration = false;
         settings = {
           on_force_close = "quit";
           mouse_mode = false;
@@ -152,15 +153,6 @@ in
         nix-direnv.enable = true;
       };
     };
-
-    xdg.configFile."zellij/layouts/default.kdl".text = ''
-      layout {
-        pane
-        pane size=1 borderless=true {
-          plugin location="status-bar"
-        }
-      }
-    '';
 
     home.sessionPath = [
       "$HOME/.cargo/bin"
