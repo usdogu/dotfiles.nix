@@ -111,7 +111,6 @@ in
       '';
       wrapperFeatures.gtk = true;
       extraConfig = ''
-        seat seat0 xcursor_theme "capitaine-cursors-white" 32
         exec ${pkgs.wl-clipboard}/bin/wl-paste -t text --watch ${pkgs.clipman}/bin/clipman store --no-persist
       '';
     };

@@ -55,10 +55,12 @@ in
     };
 
     home.pointerCursor = {
+      enable = true;
       package = pkgs.capitaine-cursors;
       name = "capitaine-cursors-white";
       gtk.enable = true;
       x11.enable = true;
+      sway.enable = true;
     };
 
     fonts.fontconfig.enable = true;

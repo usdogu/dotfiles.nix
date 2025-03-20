@@ -29,18 +29,10 @@ in
             normal = "block";
             select = "underline";
           };
-
           file-picker.hidden = false;
         };
         keys = {
-          normal = {
-            "0" = "goto_line_start";
-            "$" = "goto_line_end";
-            G = "goto_last_line";
-            g = {
-              G = "goto_last_line";
-            };
-          };
+          normal.space.o = "file_picker_in_current_buffer_directory";
           select = {
             "$" = "goto_line_end";
             G = "goto_last_line";
