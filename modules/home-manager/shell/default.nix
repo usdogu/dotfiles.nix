@@ -140,6 +140,7 @@ in
           copy_on_select = false;
           pane_frames = false;
           default_layout = "compact";
+          show_startup_tips = false;
         };
       };
 
