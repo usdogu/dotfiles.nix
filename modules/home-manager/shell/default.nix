@@ -132,8 +132,7 @@ in
 
       zellij = {
         enable = true;
-        enableBashIntegration = false;
-        enableZshIntegration = false;
+        enableFishIntegration = true;
         settings = {
           on_force_close = "quit";
           mouse_mode = false;
