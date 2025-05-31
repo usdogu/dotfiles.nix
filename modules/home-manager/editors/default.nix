@@ -76,6 +76,10 @@ in
             command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-json-language-server";
             args = [ "--stdio" ];
           };
+          tailwindcss-ls = {
+            command = lib.getExe pkgs.tailwindcss-language-server;
+            args = [ "--stdio" ];
+          };
         };
         language = [
           {
@@ -123,6 +127,7 @@ in
                 except-features = [ "format" ];
               }
               "biome"
+              "tailwindcss-ls"
               "wakatime"
             ];
           }
@@ -135,6 +140,7 @@ in
                 except-features = [ "format" ];
               }
               "biome"
+              "tailwindcss-ls"
               "wakatime"
             ];
           }
