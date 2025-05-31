@@ -9,7 +9,10 @@
     inputs.home-manager.darwinModules.default
     inputs.self.darwinModules.dogu
   ];
-  system.stateVersion = 5;
+  system = {
+    stateVersion = 5;
+    primaryUser = "dogu";
+  };
   networking = {
     hostName = "dou-mek";
     computerName = "Dou's Air";
