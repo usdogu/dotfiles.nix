@@ -31,6 +31,7 @@ in
         taps
         ;
       caskArgs.no_quarantine = true;
+      greedyCasks = true;
       onActivation = {
         autoUpdate = true;
         cleanup = "zap";
