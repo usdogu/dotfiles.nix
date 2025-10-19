@@ -47,7 +47,6 @@
         "orion"
         "playcover-community"
         "raycast"
-        "rider"
         "telegram"
         "swiftformat-for-xcode"
         "alacritty"

@@ -55,13 +55,13 @@ in
           email = "uspro@disroot.org";
         };
         ui = {
-          diff.tool = [
+          diff-formatter = [
             (lib.getExe pkgs.difftastic)
             "--color=auto"
             "--background=dark"
             "--display=side-by-side"
             "$left"
-            "right"
+            "$right"
           ];
         };
         signing = {

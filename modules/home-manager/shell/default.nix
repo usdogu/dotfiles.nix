@@ -140,6 +140,14 @@ in
           pane_frames = false;
           default_layout = "compact";
           show_startup_tips = false;
+          plugins = {
+            compact-bar = {
+              _props = {
+                location = "zellij:compact-bar";
+              };
+              tooltip = "F1";
+            };
+          };
         };
       };
 
