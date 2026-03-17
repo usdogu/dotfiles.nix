@@ -62,8 +62,8 @@ in
               };
           };
           wakatime.command = lib.getExe (
-            inputs.wakatime-ls.packages.${pkgs.system}.default.override {
-              wakatime = pkgs.wakatime.overrideAttrs (_: {
+            inputs.wakatime-ls.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+              wakatime-cli = pkgs.wakatime-cli.overrideAttrs (_: {
                 doCheck = false;
               });
             }
@@ -86,7 +86,7 @@ in
             name = "nix";
             auto-format = true;
             formatter = {
-              command = lib.getExe pkgs.nixfmt-rfc-style;
+              command = lib.getExe pkgs.nixfmt;
               args = [ "-" ];
             };
             language-servers = [

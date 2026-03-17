@@ -77,11 +77,14 @@
             config.allowUnfree = true;
           };
 
-          pre-commit.settings.hooks = {
-            nixfmt-rfc-style.enable = true;
-            nil.enable = true;
-            deadnix.enable = true;
-            statix.enable = true;
+          pre-commit.settings = {
+            hooks = {
+              nixfmt.enable = true;
+              nil.enable = true;
+              deadnix.enable = true;
+              statix.enable = true;
+            };
+            package = pkgs.prek;
           };
           devShells.default = pkgs.mkShellNoCC {
             packages = [ inputs'.agenix.packages.agenix ];

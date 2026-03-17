@@ -16,7 +16,6 @@
     mpv
     wl-clipboard
     telegram-desktop
-    # inputs.self.packages."${pkgs.system}".spotify-adblock
     wf-recorder # obs but lighter and for wayland
   ];
 

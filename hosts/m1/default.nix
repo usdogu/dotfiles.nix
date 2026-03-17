@@ -56,13 +56,19 @@
         "aldente"
         "shortcat"
         "quickrecorder"
+        "macfuse"
+        "mounty"
       ];
       masApps = {
         Xcode = 497799835;
         Flow = 1423210932;
         PDFGear = 6469021132;
       };
-      taps = [ "lihaoyun6/tap" ];
+      brews = [ "gromgit/fuse/ntfs-3g-mac" ];
+      taps = [
+        "lihaoyun6/tap"
+        "gromgit/homebrew-fuse"
+      ];
     };
   };
 

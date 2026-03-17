@@ -20,6 +20,11 @@ in
       type = lib.types.listOf lib.types.str;
       default = [ ];
     };
+    brews = lib.mkOption {
+      description = "Homebrew formulaes to install";
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -29,8 +34,8 @@ in
         casks
         masApps
         taps
+        brews
         ;
-      caskArgs.no_quarantine = true;
       greedyCasks = true;
       onActivation = {
         autoUpdate = true;
