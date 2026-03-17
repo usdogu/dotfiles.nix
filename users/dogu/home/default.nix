@@ -44,7 +44,6 @@
     command-not-found.enable = false;
     gh = {
       enable = true;
-      extensions = [ pkgs.gh-copilot ];
     };
   };
 
