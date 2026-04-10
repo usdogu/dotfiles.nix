@@ -48,7 +48,6 @@
         "playcover-community"
         "raycast"
         "telegram"
-        "swiftformat-for-xcode"
         "alacritty"
         "hiddenbar"
         "the-unarchiver"
@@ -60,8 +59,6 @@
         "mounty"
       ];
       masApps = {
-        Xcode = 497799835;
-        Flow = 1423210932;
         PDFGear = 6469021132;
       };
       brews = [ "gromgit/fuse/ntfs-3g-mac" ];

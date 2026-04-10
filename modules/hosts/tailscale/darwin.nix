@@ -4,6 +4,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    homebrew.casks = [ "tailscale-app" ];
+    dogu.homebrew.casks = [ "tailscale-app" ];
   };
 }

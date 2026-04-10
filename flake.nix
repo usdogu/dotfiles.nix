@@ -84,7 +84,6 @@
               deadnix.enable = true;
               statix.enable = true;
             };
-            package = pkgs.prek;
           };
           devShells.default = pkgs.mkShellNoCC {
             packages = [ inputs'.agenix.packages.agenix ];
