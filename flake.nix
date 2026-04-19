@@ -46,6 +46,10 @@
         gitignore.follows = "pre-commit-hooks/gitignore";
       };
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -110,6 +114,11 @@
               inherit inputs;
             };
             modules = [ ./hosts/nebula ];
+          };
+          oberon = inputs.nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [ ./hosts/oberon ];
           };
         };
         darwinConfigurations = {

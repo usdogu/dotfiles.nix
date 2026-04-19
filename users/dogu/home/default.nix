@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }:
 {
@@ -12,12 +11,6 @@
 
   home = {
     stateVersion = "25.05";
-    sessionVariables.WAKATIME_HOME = "${config.xdg.configHome}/wakatime";
-  };
-
-  age.secrets.wakatime-config = {
-    file = inputs.self + /secrets/wakatime-config.age;
-    path = "${config.xdg.configHome}/wakatime/.wakatime.cfg";
   };
 
   systemd.user.startServices = "sd-switch";
