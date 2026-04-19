@@ -249,29 +249,7 @@
         "nix-monitored": "nix-monitored",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
-        "pre-commit-hooks": "pre-commit-hooks",
-        "wakatime-ls": "wakatime-ls"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "wakatime-ls",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769742225,
-        "narHash": "sha256-roSD/OJ3x9nF+Dxr+/bLClX3U8FP9EkCQIFpzxKjSUM=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "bcdd8d37594f0e201639f55889c01c827baf5c75",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
+        "pre-commit-hooks": "pre-commit-hooks"
       }
     },
     "systems": {
@@ -286,31 +264,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "wakatime-ls": {
-      "inputs": {
-        "gitignore": [
-          "pre-commit-hooks",
-          "gitignore"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1770482328,
-        "narHash": "sha256-IFhqBGgL4sXU6Sv1jWmLc3MN/uiHBCET71N+sC33aro=",
-        "owner": "mrnossiom",
-        "repo": "wakatime-ls",
-        "rev": "c2dc1e1825f59cd4e7876b8d7573905854aff231",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrnossiom",
-        "repo": "wakatime-ls",
         "type": "github"
       }
     }
