@@ -1,14 +1,12 @@
 {
   config,
   lib,
-  inputs,
   ...
 }:
 let
   cfg = config.dogu.grub;
 in
 {
-  imports = [ inputs.grub2-themes.nixosModules.default ];
 
   options.dogu.grub = {
     enable = lib.mkEnableOption "GRUB settings";
@@ -27,11 +25,6 @@ in
         the menu item that was used at the last boot.
       '';
     };
-    theme = lib.mkOption {
-      description = "GRUB theme to use";
-      default = "vimix";
-      type = lib.types.str;
-    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -43,9 +36,6 @@ in
           useOSProber
           default
           ;
-      };
-      grub2-theme = {
-        inherit (cfg) enable theme;
       };
     };
   };

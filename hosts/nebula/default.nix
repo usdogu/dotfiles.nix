@@ -142,7 +142,6 @@
       device = "/dev/sdb";
       useOSProber = true;
       default = "2";
-      theme = "vimix";
     };
   };
   system.stateVersion = "25.05";
