@@ -15,9 +15,9 @@ in
 
     systemd.services = {
       NetworkManager-wait-online.enable = false;
-      dnscrypt-proxy2.serviceConfig.StateDirectory = "dnscrypt-proxy";
+      dnscrypt-proxy.serviceConfig.StateDirectory = "dnscrypt-proxy";
     };
-    services.dnscrypt-proxy2 = {
+    services.dnscrypt-proxy = {
       enable = true;
       settings = {
         bootstrap_resolvers = [
