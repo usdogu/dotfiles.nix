@@ -14,8 +14,12 @@
     inputs.self.nixosModules.dogu
     ./home
   ];
-  networking.hostName = "oberon";
-  networking.firewall.allowedTCPPorts = [ 22 ];
+
+  networking = {
+    hostName = "oberon";
+    firewall.allowedTCPPorts = [ 22 ];
+  };
+
   boot = {
     kernelParams = [ "net.ifnames=0" ];
     tmp.cleanOnBoot = true;
@@ -61,16 +65,6 @@
     };
   };
 
-  virtualisation = {
-    libvirtd.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-
   security = {
     doas = {
       enable = true;
@@ -98,7 +92,6 @@
     systemPackages = with pkgs; [
       helix
       git
-      virt-manager
     ];
   };
 
