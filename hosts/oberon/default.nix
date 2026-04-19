@@ -12,7 +12,7 @@
     inputs.disko.nixosModules.disko
     (inputs.self + /users/dogu)
     inputs.self.nixosModules.dogu
-    # ./home
+    ./home
   ];
   networking.hostName = "oberon";
   networking.firewall.allowedTCPPorts = [ 22 ];
