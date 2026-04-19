@@ -104,9 +104,9 @@
 
   dogu = {
     nixSettings.enable = true;
-    # tailscale.enable = true;
+    tailscale.enable = true;
     network.enable = true;
-    # agenix.enable = true;
+    agenix.enable = true;
   };
   system.stateVersion = "25.05";
 }

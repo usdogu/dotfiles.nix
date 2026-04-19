@@ -131,7 +131,7 @@ in
       };
 
       zellij = {
-        enable = true;
+        enable = lib.mkDefault true;
         enableFishIntegration = true;
         settings = {
           on_force_close = "quit";
