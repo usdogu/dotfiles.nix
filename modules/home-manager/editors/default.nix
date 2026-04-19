@@ -61,13 +61,6 @@ in
                 };
               };
           };
-          wakatime.command = lib.getExe (
-            inputs.wakatime-ls.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-              wakatime-cli = pkgs.wakatime-cli.overrideAttrs (_: {
-                doCheck = false;
-              });
-            }
-          );
           biome = {
             command = lib.getExe pkgs.biome;
             args = [ "lsp-proxy" ];
@@ -91,7 +84,6 @@ in
             };
             language-servers = [
               "nixd"
-              "wakatime"
             ];
           }
           {
@@ -103,7 +95,6 @@ in
                 except-features = [ "format" ];
               }
               "biome"
-              "wakatime"
             ];
           }
           {
@@ -115,7 +106,6 @@ in
                 except-features = [ "format" ];
               }
               "biome"
-              "wakatime"
             ];
           }
           {
@@ -128,7 +118,6 @@ in
               }
               "biome"
               "tailwindcss-ls"
-              "wakatime"
             ];
           }
           {
@@ -141,7 +130,6 @@ in
               }
               "biome"
               "tailwindcss-ls"
-              "wakatime"
             ];
           }
           {
